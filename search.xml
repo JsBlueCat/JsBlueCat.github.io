@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>工作中用到的一些小tips</title>
+      <link href="2021/03/10/megvii-utils/"/>
+      <url>2021/03/10/megvii-utils/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> megvii </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode 代码分析</title>
+      <link href="2021/03/10/leetcode-index/"/>
+      <url>2021/03/10/leetcode-index/</url>
+      
+        <content type="html"><![CDATA[<h1 id="本人分析过的leetcode题目，未完待续…"><a href="#本人分析过的leetcode题目，未完待续…" class="headerlink" title="本人分析过的leetcode题目，未完待续…"></a>本人分析过的leetcode题目，未完待续…</h1><p>硕士毕业期间刷过的题目，走过的路记录一下，以方便未来看起，题目确实刷的少仅完成了200/1000。<br>认真写分析的更少了，哎，时间不够用啊！凑合着看吧，以后再补。。。</p><p>推荐个合理顺序的知乎链接 <a href="https://www.zhihu.com/question/36738189">刷题顺序</a></p><h1 id="刷过的题目分析"><a href="#刷过的题目分析" class="headerlink" title="刷过的题目分析"></a>刷过的题目分析</h1><ul><li><a href="/2018/04/29/leetcode-1/">leetcode-1</a></li><li><a href="/2018/04/29/leetcode-2">leetcode-2</a></li><li><a href="/2018/04/29/leetcode-3">leetcode-3</a></li><li><a href="/2018/04/29/leetcode-4/">leetcode-4</a></li><li><a href="/2018/05/01/leetcode-5/">leetcode-5</a></li><li><a href="/2018/05/01/leetcode-7/">leetcode-7</a></li><li><a href="/2018/05/01/leetcode-53/">leetcode-53</a></li><li><a href="/2018/05/03/leetcode-70/">leetcode-70</a></li><li><a href="/2018/05/03/leetcode-121/">leetcode-121</a></li><li><a href="/2018/05/05/leetcode-123/">leetcode-123</a></li><li><a href="/2018/05/15/leetcode-188/">leetcode-188</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ycm hack</title>
+      <link href="2021/01/23/megvii-ycm/"/>
+      <url>2021/01/23/megvii-ycm/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装ycm的时候出现-mrab-regex-socks5-错误"><a href="#安装ycm的时候出现-mrab-regex-socks5-错误" class="headerlink" title="安装ycm的时候出现 mrab-regex socks5 错误"></a>安装ycm的时候出现 mrab-regex socks5 错误</h1><p>原因是因为国内的网</p><p>修改办法就是</p><p>修改 .git/config/third_parity/ycm/config 里面 修改 github 的 地址<br>然后  git submodule –recursive sync 同步一下就解决了<br>最后 在跑 update 的时候 加入 –remote</p><pre class="line-numbers language-none"><code class="language-none">git submodule update --remote --force third_party&#x2F;mrab-regex&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> megvii </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ycm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>megvii-01</title>
+      <link href="2020/11/11/megvii-01/"/>
+      <url>2020/11/11/megvii-01/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Background-MegEngine-Reading"><a href="#Background-MegEngine-Reading" class="headerlink" title="Background - MegEngine Reading"></a>Background - MegEngine Reading</h1><p>因为硕士快毕业了，论文也发了，所以就想好好深入剖析一下 MegEngine 的黑科技哈。<br>笔者尽量给大家带来生动形象的源码解读，不过由于笔者目前的水平原因，本系列文章仅仅适合小白入门哈，大神请绕道～～<br>当然了，我也会尽我所能，一点点地从浅入深的剖析MegEngine。 废话不多说，开始正题的讲解，今天为大家带来的是框架（下文对MegEngine的简称）的整体架构。</p><h1 id="框架所需要的编译环境"><a href="#框架所需要的编译环境" class="headerlink" title="框架所需要的编译环境"></a>框架所需要的编译环境</h1><p>安装方式各种各异啊，只是使用的话使用pip 安装就好了。</p><ol><li>框架本身是提供<code>pip</code> 的安装的，命令如下 ： <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 -m pip install megengine -f https:&#x2F;&#x2F;megengine.org.cn&#x2F;whl&#x2F;mge.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>官方是已经做好了二进制的文件，对于大多数人，直接使用就行了。<br>所需的安装环境也不复杂, 具体如下所示：</li></ol><p>$OS$</p><ul><li>Linux: 64bit</li><li>Windows: 64bit</li><li>MacOS: 10.14+</li></ul><p>$Python$</p><ul><li>3.5 To 3.8</li></ul><p>不知道为什么不支持 3.9 吼～ 这边要入职了去请教一下</p><p>$Other Requirement$</p><ul><li>CUDA &gt;= 10.1 （Nvidia 的 runtime 驱动以及相关的 编译器啊之类的）</li><li>cuDNN &gt;= 7.6  （一些dnn 的计算库 需要和 cuda版本配套）</li><li>TensorRT &gt;= 5.1.5 （推理优化模型，合并卷积层，减少参数，int8 优化等）</li><li>LLVM/Clang &gt;= 6.0 （编译前端clang （和大名鼎鼎的 g++ 类似）和后端llvm）</li><li>python-numpy (矩阵运算的 不懂的话 apt 安装一下， <code>windows</code> <code>用conda</code> 或者 <code>pip</code> 搞一波)</li></ul><p>环境就是这些接下来是我们 BFS党（build from source） 的一些教程 </p><h1 id="编译环境安装"><a href="#编译环境安装" class="headerlink" title="编译环境安装"></a>编译环境安装</h1><ul><li>cmake （3.15+） 小编搞得最新的 <a href="https://cmake.org/download/">cmake官网</a></li><li>git (一般 linux 自带)</li><li>build-essential (<code>sudo apt-get install build-essential</code>) 一些 unix makefile 的编译环境</li><li>TensorRT <a href="https://developer.nvidia.com/nvidia-tensorrt-7x-download">下载地址</a> 注意安装完 <code>LD_LIBRARY_PYTH</code> 指向库目录</li><li>Cuda Cudnn 野鸡教程搜一下，随处都是。 我这边是 11.0 就不赘述了 需要注意 cudnn 的软链接 不能 <code>cp</code> 自己 <code>ls -ahl</code> 看一下指向 不放心的话 <code>tree</code> 一下。 这里需要说一下 框架中寻找cmake 的 路径是 <code>cmake/cudnn.cmake </code> 源码类似下面这样.</li></ul><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">find_package(PkgConfig)if($&#123;PkgConfig_FOUND&#125;)    pkg_check_modules(PC_CUDNN QUIET CUDNN)endif()if(NOT &quot;$ENV&#123;LIBRARY_PATH&#125;&quot; STREQUAL &quot;&quot;)    string(REPLACE &quot;:&quot; &quot;;&quot; SYSTEM_LIBRARY_PATHS $ENV&#123;LIBRARY_PATH&#125;)endif()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>note： 这里需要说一下就是，cmake 是通过 pkgconfig 找到lib的 路径的， 需要添加下 LIBRARY_PATH 或者 自己在 <code>/etc/ld.config.so.d</code> 下面 定义文件 然后 <code>ldconfig</code> 同理哈，后续的 TensorRT CUDA CUDNN 都得这样，以后不提示了哈。</p><ul><li>llvm 这个比较大哈，这个解释下就是编译器的后端， 不理解的可以详细差资料。</li></ul><p><strong>以下可以跳过哈～～</strong><br><em>讲个故事： 9几年的时候  GNU 搞得 gcc 一片大伙，c++ 的 gdb，gprof 调试都挺不错的，但是 后面几年 多线程搞出来了，诶 gdb 有个问题 不支持线程调试，然后不知道啥原因一直没加， APPLE 就是乔布斯那个（知道吧？？？） 结果出来和GCC说：“兄蝶你帮我搞几个功能” 但是 gcc 当时不吊人家，好了， 一句名言出来了“当年你对我不屑一顾，现在我让你高攀不起”， apple 03年的时候 自己搞了个团队搞编译器， 哇草还真被他们搞出来了，就是所谓 llvm ，还支持多线程调试。 吊吧，后面搞了个前端编译 clang 完美兼容 gcc。 呵呵，gcc 傻眼了</em></p><p>言归正传，小编跑到<a href="https://releases.llvm.org/download.html#11.0.0">llvm官网</a> 下载了 llvm 和 clang 然后 用 cmake 装的，这个是为了支持JIT （后续文章会说，这边还没深入到那么多）</p><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">cmake --build .cmake --build . --target install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>这边 . 是当前目录，可以自己选择一个目录  一般是 搞个 <code>build</code> <code>然后到那个build</code></p><p>简单的不带cuda 的编译 非常简单， 安装下 MKL 就行<br>MKL 是微软的一套 高效计算库</p><p>带cuda的编译比较麻烦，安装 llvm tensorRT cudnn mkl<br>具体可以看下 /scirpt/cmake-build/host_build.sh 脚本里面</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cmake \-DCMAKE_BUILD_TYPE&#x3D;$BUILD_TYPE \-DMGE_INFERENCE_ONLY&#x3D;$MGE_INFERENCE_ONLY \-DMGE_WITH_CUDA&#x3D;$MGE_WITH_CUDA \-DCMAKE_INSTALL_PREFIX&#x3D;$INSTALL_DIR \$&#123;EXTRA_CMAKE_ARGS&#125; \$SRC_DIR<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>需要注意的是， halide 的编译 非常奇怪 </p><pre class="line-numbers language-none"><code class="language-none">find_package(LLVM 6.0 REQUIRED CONFIG)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这边我改成了 llvm 11.0 的版本， 没有使用 6.0 哈 （结果出错了）</p><p>敲黑板，改代码成为11会造成问题 ， 虽然可以通过一部分的编译 但是 halide 是需要 6.0 的llvm 的</p><h1 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h1><p>好了编译的前期环境做完了，接下来来说一下整体项目的架构 … </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> megvii </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 旷视觉天元开源框架 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HOW POWERFUL ARE GRAPH NEURAL NETWORKS?</title>
+      <link href="2019/07/17/3d-ginconv/"/>
+      <url>2019/07/17/3d-ginconv/</url>
+      
+        <content type="html"><![CDATA[<h1 id="HOW-POWERFUL-ARE-GRAPH-NEURAL-NETWORKS"><a href="#HOW-POWERFUL-ARE-GRAPH-NEURAL-NETWORKS" class="headerlink" title="HOW POWERFUL ARE GRAPH NEURAL NETWORKS?"></a>HOW POWERFUL ARE GRAPH NEURAL NETWORKS?</h1><p>GNN 可以有邻接元素聚合方法，本文讨论了很多的 图变形和图的方法</p><p><img "" class="lazyload placeholder" data-original="/images/ginconv/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import torchfrom torch_geometric.nn.conv import MessagePassingfrom torch_geometric.utils import remove_self_loopsfrom ..inits import resetclass GINConv(MessagePassing):    r&quot;&quot;&quot;The graph isomorphism operator from the &#96;&quot;How Powerful are    Graph Neural Networks?&quot; &lt;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1810.00826&gt;&#96;_ paper    .. math::        \mathbf&#123;x&#125;^&#123;\prime&#125;_i &#x3D; h_&#123;\mathbf&#123;\Theta&#125;&#125; \left( (1 + \epsilon) \cdot        \mathbf&#123;x&#125;_i + \sum_&#123;j \in \mathcal&#123;N&#125;(i)&#125; \mathbf&#123;x&#125;_j \right),    here :math:&#96;h_&#123;\mathbf&#123;\Theta&#125;&#125;&#96; denotes a neural network, *.i.e.* a MLP.    Args:        nn (torch.nn.Module): A neural network :math:&#96;h_&#123;\mathbf&#123;\Theta&#125;&#125;&#96; that            maps node features :obj:&#96;x&#96; of shape :obj:&#96;[-1, in_channels]&#96; to            shape :obj:&#96;[-1, out_channels]&#96;, *e.g.*, defined by            :class:&#96;torch.nn.Sequential&#96;.        eps (float, optional): (Initial) :math:&#96;\epsilon&#96; value.            (default: :obj:&#96;0&#96;)        train_eps (bool, optional): If set to :obj:&#96;True&#96;, :math:&#96;\epsilon&#96;            will be a trainable parameter. (default: :obj:&#96;False&#96;)        **kwargs (optional): Additional arguments of            :class:&#96;torch_geometric.nn.conv.MessagePassing&#96;.    &quot;&quot;&quot;    def __init__(self, nn, eps&#x3D;0, train_eps&#x3D;False, **kwargs):        super(GINConv, self).__init__(aggr&#x3D;&#39;add&#39;, **kwargs)        self.nn &#x3D; nn        self.initial_eps &#x3D; eps        if train_eps:            self.eps &#x3D; torch.nn.Parameter(torch.Tensor([eps]))        else:            self.register_buffer(&#39;eps&#39;, torch.Tensor([eps]))        self.reset_parameters()    def reset_parameters(self):        reset(self.nn)        self.eps.data.fill_(self.initial_eps)    def forward(self, x, edge_index):        &quot;&quot;&quot;&quot;&quot;&quot;        x &#x3D; x.unsqueeze(-1) if x.dim() &#x3D;&#x3D; 1 else x        edge_index, _ &#x3D; remove_self_loops(edge_index)        out &#x3D; self.nn((1 + self.eps) * x + self.propagate(edge_index, x&#x3D;x))        return out    def message(self, x_j):        return x_j    def __repr__(self):        return &#39;&#123;&#125;(nn&#x3D;&#123;&#125;)&#39;.format(self.__class__.__name__, self.nn)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img "" class="lazyload placeholder" data-original="/images/ginconv/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>文章里说，本文提出的所有卷积是最好的卷积</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Graph Convolution </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS</title>
+      <link href="2019/07/16/3d-gcn/"/>
+      <url>2019/07/16/3d-gcn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SEMI-SUPERVISED-CLASSIFICATION-WITH-GRAPH-CONVOLUTIONAL-NETWORKS"><a href="#SEMI-SUPERVISED-CLASSIFICATION-WITH-GRAPH-CONVOLUTIONAL-NETWORKS" class="headerlink" title="SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS"></a>SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS</h1><p>本文提出了一种，直接作用于图的卷积神经网络.</p><h1 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h1><p>作者发现可以用过 图拉普拉斯正则项来优化损失函数<br><img "" class="lazyload placeholder" data-original="/images/GCN/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>L0代表监督损失函数，f()代表可微神经网络函数，λ代表权重因子 X 是 Xi的向量的矩阵。<br>∆ = D − A </p><h2 id="拉普拉斯矩阵"><a href="#拉普拉斯矩阵" class="headerlink" title="拉普拉斯矩阵"></a>拉普拉斯矩阵</h2><p>L = D - A<br>D 是 degree matrix 度矩阵<br><img "" class="lazyload placeholder" data-original="/images/GCN/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>A 是 adjacency matrix<br><img "" class="lazyload placeholder" data-original="/images/GCN/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/GCN/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>如果 i=j 是 是vi的度<br>-1 i不等于j  vi 和 vj 邻近<br>否则的话 是 0 不邻接</p><h3 id="adjacency-matrix"><a href="#adjacency-matrix" class="headerlink" title="adjacency matrix"></a>adjacency matrix</h3><ol><li> 简单图（无环）只包含0，1. </li><li> 无向图的邻接矩是对称的</li><li> 邻接矩阵的N此方，（i，j）表示从i到j经过n的边 的 个数</li><li> A^3的迹/6代表 无向图中三角形的个数</li></ol><h3 id="Spectrum"><a href="#Spectrum" class="headerlink" title="Spectrum"></a>Spectrum</h3><p>The adjacency matrix of an undirected simple graph is symmetric, and therefore has a complete set of real eigenvalues and an orthogonal eigenvector basis. The set of eigenvalues of a graph is the spectrum of the graph.[5] It is common to denote the eigenvalues by λ1&gt;λ2&gt;…&gt;λn<br>实特征值 和 正交的特征向量</p><ol><li>λ1 大于最大的度数  Perron–Frobenius theorem 证明</li><li>v 是和 λ1 相关的特征向量</li><li>x the component in which v has maximum absolute value  x 最大的绝对值</li><li>λ1 - λ2  叫做 spectral gap</li><li>spectral radius  是 max λi  λi&lt;d</li></ol><p>A1 and A2 are similar and therefore have the same minimal polynomial, characteristic polynomial, eigenvalues, determinant and trace. </p><h2 id="Regular-graph"><a href="#Regular-graph" class="headerlink" title="Regular graph"></a>Regular graph</h2><p>拥有相同邻边的点  叫做常规图</p><h2 id="Symmetric-normalized-Laplacian-对称的规范化的拉普拉斯算子"><a href="#Symmetric-normalized-Laplacian-对称的规范化的拉普拉斯算子" class="headerlink" title="Symmetric normalized Laplacian 对称的规范化的拉普拉斯算子"></a>Symmetric normalized Laplacian 对称的规范化的拉普拉斯算子</h2><p><img "" class="lazyload placeholder" data-original="/images/GCN/5.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p><img "" class="lazyload placeholder" data-original="/images/GCN/6.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>本文使用f(X, A) 神经网络去拟合一个函数<br><img "" class="lazyload placeholder" data-original="/images/GCN/7.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">import torchfrom torch.nn import Parameterfrom torch_scatter import scatter_addfrom torch_geometric.nn.conv import MessagePassingfrom torch_geometric.utils import add_remaining_self_loopsfrom ..inits import glorot, zerosclass GCNConv(MessagePassing):    r&quot;&quot;&quot;The graph convolutional operator from the &#96;&quot;Semi-supervised    Classfication with Graph Convolutional Networks&quot;    &lt;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1609.02907&gt;&#96;_ paper    .. math::        \mathbf&#123;X&#125;^&#123;\prime&#125; &#x3D; \mathbf&#123;\hat&#123;D&#125;&#125;^&#123;-1&#x2F;2&#125; \mathbf&#123;\hat&#123;A&#125;&#125;        \mathbf&#123;\hat&#123;D&#125;&#125;^&#123;-1&#x2F;2&#125; \mathbf&#123;X&#125; \mathbf&#123;\Theta&#125;,    where :math:&#96;\mathbf&#123;\hat&#123;A&#125;&#125; &#x3D; \mathbf&#123;A&#125; + \mathbf&#123;I&#125;&#96; denotes the    adjacency matrix with inserted self-loops and    :math:&#96;\hat&#123;D&#125;_&#123;ii&#125; &#x3D; \sum_&#123;j&#x3D;0&#125; \hat&#123;A&#125;_&#123;ij&#125;&#96; its diagonal degree matrix.    Args:        in_channels (int): Size of each input sample.        out_channels (int): Size of each output sample.        improved (bool, optional): If set to :obj:&#96;True&#96;, the layer computes            :math:&#96;\mathbf&#123;\hat&#123;A&#125;&#125;&#96; as :math:&#96;\mathbf&#123;A&#125; + 2\mathbf&#123;I&#125;&#96;.            (default: :obj:&#96;False&#96;)        cached (bool, optional): If set to :obj:&#96;True&#96;, the layer will cache            the computation of :math:&#96;&#123;\left(\mathbf&#123;\hat&#123;D&#125;&#125;^&#123;-1&#x2F;2&#125;            \mathbf&#123;\hat&#123;A&#125;&#125; \mathbf&#123;\hat&#123;D&#125;&#125;^&#123;-1&#x2F;2&#125; \right)&#125;&#96;.            (default: :obj:&#96;False&#96;)        bias (bool, optional): If set to :obj:&#96;False&#96;, the layer will not learn            an additive bias. (default: :obj:&#96;True&#96;)        **kwargs (optional): Additional arguments of            :class:&#96;torch_geometric.nn.conv.MessagePassing&#96;.    &quot;&quot;&quot;    def __init__(self,                 in_channels,                 out_channels,                 improved&#x3D;False,                 cached&#x3D;False,                 bias&#x3D;True,                 **kwargs):        super(GCNConv, self).__init__(aggr&#x3D;&#39;add&#39;, **kwargs)        self.in_channels &#x3D; in_channels        self.out_channels &#x3D; out_channels        self.improved &#x3D; improved        self.cached &#x3D; cached        self.cached_result &#x3D; None        self.weight &#x3D; Parameter(torch.Tensor(in_channels, out_channels))        if bias:            self.bias &#x3D; Parameter(torch.Tensor(out_channels))        else:            self.register_parameter(&#39;bias&#39;, None)        self.reset_parameters()    def reset_parameters(self):        glorot(self.weight)        zeros(self.bias)        self.cached_result &#x3D; None        self.cached_num_edges &#x3D; None    @staticmethod    def norm(edge_index, num_nodes, edge_weight, improved&#x3D;False, dtype&#x3D;None):        if edge_weight is None:            edge_weight &#x3D; torch.ones((edge_index.size(1), ),                                     dtype&#x3D;dtype,                                     device&#x3D;edge_index.device)        fill_value &#x3D; 1 if not improved else 2        edge_index, edge_weight &#x3D; add_remaining_self_loops(            edge_index, edge_weight, fill_value, num_nodes)        row, col &#x3D; edge_index        deg &#x3D; scatter_add(edge_weight, row, dim&#x3D;0, dim_size&#x3D;num_nodes)        deg_inv_sqrt &#x3D; deg.pow(-0.5)        deg_inv_sqrt[deg_inv_sqrt &#x3D;&#x3D; float(&#39;inf&#39;)] &#x3D; 0        return edge_index, deg_inv_sqrt[row] * edge_weight * deg_inv_sqrt[col]    def forward(self, x, edge_index, edge_weight&#x3D;None):        &quot;&quot;&quot;&quot;&quot;&quot;        x &#x3D; torch.matmul(x, self.weight)        if self.cached and self.cached_result is not None:            if edge_index.size(1) !&#x3D; self.cached_num_edges:                raise RuntimeError(                    &#39;Cached &#123;&#125; number of edges, but found &#123;&#125;&#39;.format(                        self.cached_num_edges, edge_index.size(1)))        if not self.cached or self.cached_result is None:            self.cached_num_edges &#x3D; edge_index.size(1)            edge_index, norm &#x3D; self.norm(edge_index, x.size(0), edge_weight,                                         self.improved, x.dtype)            self.cached_result &#x3D; edge_index, norm        edge_index, norm &#x3D; self.cached_result        return self.propagate(edge_index, x&#x3D;x, norm&#x3D;norm)    def message(self, x_j, norm):        return norm.view(-1, 1) * x_j    def update(self, aggr_out):        if self.bias is not None:            aggr_out &#x3D; aggr_out + self.bias        return aggr_out    def __repr__(self):        return &#39;&#123;&#125;(&#123;&#125;, &#123;&#125;)&#39;.format(self.__class__.__name__, self.in_channels,                                   self.out_channels)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-python" data-language="python"><code class="language-python">import torchfrom torch_geometric.nn import MessagePassingfrom torch_geometric.utils import add_self_loops, degreeclass GCNConv(MessagePassing):    def __init__(self, in_channels, out_channels):        super(GCNConv, self).__init__(aggr&#x3D;&#39;add&#39;)  # &quot;Add&quot; aggregation.        self.lin &#x3D; torch.nn.Linear(in_channels, out_channels)    def forward(self, x, edge_index):        # x has shape [N, in_channels]        # edge_index has shape [2, E]        # Step 1: Add self-loops to the adjacency matrix.        edge_index, _ &#x3D; add_self_loops(edge_index, num_nodes&#x3D;x.size(0))        # Step 2: Linearly transform node feature matrix.        x &#x3D; self.lin(x)        # Step 3-5: Start propagating messages.        return self.propagate(edge_index, size&#x3D;(x.size(0), x.size(0)), x&#x3D;x)    def message(self, x_j, edge_index, size):        # x_j has shape [E, out_channels]        # Step 3: Normalize node features.        row, col &#x3D; edge_index        deg &#x3D; degree(row, size[0], dtype&#x3D;x_j.dtype)        deg_inv_sqrt &#x3D; deg.pow(-0.5)        norm &#x3D; deg_inv_sqrt[row] * deg_inv_sqrt[col]        return norm.view(-1, 1) * x_j    def update(self, aggr_out):        # aggr_out has shape [N, out_channels]        # Step 5: Return new node embeddings.        return aggr_out<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img "" class="lazyload placeholder" data-original="/images/GCN/8.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import torchfrom torch.nn import Sequential as Seq, Linear, ReLUfrom torch_geometric.nn import MessagePassingclass EdgeConv(MessagePassing):    def __init__(self, in_channels, out_channels):        super(EdgeConv, self).__init__(aggr&#x3D;&#39;max&#39;) #  &quot;Max&quot; aggregation.        self.mlp &#x3D; Seq(Linear(2 * in_channels, out_channels),                       ReLU(),                       Linear(out_channels, out_channels))    def forward(self, x, edge_index):        # x has shape [N, in_channels]        # edge_index has shape [2, E]        return self.propagate(edge_index, size&#x3D;(x.size(0), x.size(0)), x&#x3D;x)    def message(self, x_i, x_j):        # x_i has shape [E, in_channels]        # x_j has shape [E, in_channels]        tmp &#x3D; torch.cat([x_i, x_j - x_i], dim&#x3D;1)  # tmp has shape [E, 2 * in_channels]        return self.mlp(tmp)    def update(self, aggr_out):        # aggr_out has shape [N, out_channels]        return aggr_out<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Graph Convolution </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SplineCNN:Fast Geometric Deep Learning with Continuous B-Spline Kernels</title>
+      <link href="2019/07/15/3d-splinecnn/"/>
+      <url>2019/07/15/3d-splinecnn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SplineCNN-Fast-Geometric-Deep-Learning-with-Continuous-B-Spline-Kernels"><a href="#SplineCNN-Fast-Geometric-Deep-Learning-with-Continuous-B-Spline-Kernels" class="headerlink" title="SplineCNN: Fast Geometric Deep Learning with Continuous B-Spline Kernels"></a>SplineCNN: Fast Geometric Deep Learning with Continuous B-Spline Kernels</h1><p>本文提出条样方法的卷积神经网络,处理无规则和无序的空间数据,如mesh.<br>所谓的条样卷积:就是使用连续的核函数,以固定数量的训练权重.<br>并且splinecnn 允许段到段的训练,仅仅只用空间结构作为输入.</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>目前大多数深度学习方法的成功,来源于卷积操作,因为卷积有局部连接,权重共享,旋转不变性.<br>这些卷积层,很难作用到非欧领域类似离散展开和图.<br><img "" class="lazyload placeholder" data-original="/images/splinecnn/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>目前有2个领域,一个是对光谱的处理,另外一个是对空间结构的处理.</p><h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><h2 id="Deep-learning-on-graphs"><a href="#Deep-learning-on-graphs" class="headerlink" title="Deep learning on graphs"></a>Deep learning on graphs</h2><h2 id="Local-descriptors-for-discrete-manifolds"><a href="#Local-descriptors-for-discrete-manifolds" class="headerlink" title="Local descriptors for discrete manifolds"></a>Local descriptors for discrete manifolds</h2><h2 id="Spatial-continuous-convolution-kernels"><a href="#Spatial-continuous-convolution-kernels" class="headerlink" title="Spatial continuous convolution kernels"></a>Spatial continuous convolution kernels</h2><h1 id="SplineCNN"><a href="#SplineCNN" class="headerlink" title="SplineCNN"></a>SplineCNN</h1><p><img "" class="lazyload placeholder" data-original="/images/splinecnn/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="Input-graphs"><a href="#Input-graphs" class="headerlink" title="Input graphs"></a>Input graphs</h2><p>G = (V,E,U) G 表示图结构,V 表示定点结构 V = { 1, …, N } N 维的结构,E 表示边结构 为 V*V 维度,<br>U 为 [0,1] N*N*d纬度的类似临接矩阵. 1 是 (i,j) 属于变 0 是不属于.</p><h2 id="Input-node-features"><a href="#Input-node-features" class="headerlink" title="Input node features"></a>Input node features</h2><p>$f : V → R^{M_{in}}$ $f$ 是一个 函数的映射 从V的维度到 $f(i) ∈ R^{M_{in}}$ 最后输入特征就是这些函数的映射.</p><h2 id="B-spline-basis-functions"><a href="#B-spline-basis-functions" class="headerlink" title="B-spline basis functions"></a>B-spline basis functions</h2><p>let ((Nm1,i)1≤i≤k1, . . . ,(Nmd,i)1≤i≤kd)<br>denote d open B-spline bases of degree m, based on uniform, i.e. equidistant, knot vectors (c.f . Piegl et al. [19]),<br>with k = (k1, . . . , kd) defining our d-dimensional kernel size.</p><h1 id="3-2-主要概念"><a href="#3-2-主要概念" class="headerlink" title="3.2 主要概念"></a>3.2 主要概念</h1><p>f(i) 代表不规则的空间结构，空间的信息可以被 U 表示</p><ul><li>graphs 对于图来说 V 和 E 已经有了 U 可以包含边缘的权重。  for example, features like the node degree of the target nodes.</li><li>discrete manifolds V 包含离散的展开 E 代表欧式临接 U 包含关系 比如 极坐标 球形， 3维坐标。对于输入和输出每个边。</li></ul><p>Therefore, meshes, for example, can be either interpreted as embedded three-dimensional graphs or as two-dimensional manifolds, </p><h1 id="3-3-Convolution-operator"><a href="#3-3-Convolution-operator" class="headerlink" title="3.3 Convolution operator"></a>3.3 Convolution operator</h1><p><img "" class="lazyload placeholder" data-original="/images/splinecnn/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>和传统卷及类似。<br><img "" class="lazyload placeholder" data-original="/images/splinecnn/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Graph Convolution </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>meshcnn</title>
+      <link href="2019/07/10/3d-meshcnn/"/>
+      <url>2019/07/10/3d-meshcnn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MeshCNN-A-Network-with-an-Edge"><a href="#MeshCNN-A-Network-with-an-Edge" class="headerlink" title="MeshCNN: A Network with an Edge"></a>MeshCNN: A Network with an Edge</h1><p>本篇文章和以前传统的一些文章有很多不同的地方，本文提出使用特殊的卷积操作和池化操作，作用于mesh的边缘，通过减少空间的连接。</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>mesh 网格呈现是比其他同类型的数据呈现要高效（19年趋势，感觉套近乎）<br>优点是</p><ol><li>只需要很小格式的polygons</li><li>旋转啊，变形啊，这种操作可以很好的执行</li></ol><p>传统的CNN有一个很好的优势，是因为图片的呈现格式是基于一个网格，CNN应用于无规则数据上是没用的。（这也就是meshcnn 使用边 ， meshnet 使用中心点。）</p><p>meshcnn 选择使用边作为一个数据，因为边和2个三角相邻，作者使用一个对称卷积操作（不知道为什么要对称，对称会对结果产生影响吗？）</p><p>Since features are on the edges, an intuitive approach for downsampling is to use the well-known mesh simplification technique edge collapse [Hoppe 1997].</p><p>作者使用了1997年对于mesh 研究的collapse方法<br><img "" class="lazyload placeholder" data-original="/images/meshcnn/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="先前的工作"><a href="#先前的工作" class="headerlink" title="先前的工作"></a>先前的工作</h1><p>classic mesh processing techniques [Hoppe 1999; Rusinkiewicz and Levoy 2000; Botsch et al. 2010; Kalogerakis et al. 2010]<br>mesh simplification techniques [Hoppe et al. 1993; Garland and Heckbert 1997; Hoppe 1997].<br>作者还是看了下传统的处理流程，用深度学习复现了 edge-collapse technique [Hoppe 1997] 算法。</p><ol><li>多维度图片 </li><li>体素 </li><li>Graph 图</li><li>Manifold 多样呈现</li><li>点云</li></ol><p>The uniqueness of our approach compared to the previous ones is that our network operations are specifically designed to adapt to the mesh structure.<br>作者说，与先前最大的不同，是直接作用于mesh数据上的</p><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>上文已经阐述，作者将使用边作为输入数据。<br><strong>Invariant convolutions.</strong><br>作者怎么保证卷积不变性，首先边以逆时针方向<br><img "" class="lazyload placeholder" data-original="/images/meshcnn/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>如图中以e为边（a,b,c,d） , (c,d,b,a) 这两种不能解决旋转不变性。<br>作者让 ac ， bd 成对， 然后加入简单的 simple 的对称函数 比如 SUM(a,c)</p><p><strong>Input features</strong><br>对于输入特征 <img "" class="lazyload placeholder" data-original="/images/meshcnn/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> 作者定义了<br>1个二面角，2个内角和2个边垂比。<br>首先可以更具 二面角 -90 ° 还原一个内角，再有一个内角。就得到了3个内角<br>其次根据e边长的大小，与长宽比相乘，就还原了垂直距离。<br>最后通过排序，来解决旋转不变性。</p><p><strong>Global ordering</strong><br>作者使用pointnet的全局池化。使用原先的序列，保证旋转不变性。</p><p><strong>Pooling</strong><br><img "" class="lazyload placeholder" data-original="/images/meshcnn/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>it provides flexibility with regards to the output dimensions of the pooling layer<br>作者的池化，用的是传统的mesh崩塌方法</p><h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h1><p>二维图像的网格，天然的定义了 周围连接的元素。<br>作者重新定义了一下mesh的格式<br>A mesh is defined by the pair (V , F ), where V = {v1, v2 · · · } is<br>the set of vertex positions in R3, and F defines the connectivity<br>(triplets of vertices for triangular meshes).</p><p>定义了 V 和 F 的集合  V是顶点坐标，F是三角网格的三边。V,F已知，定义E 为边的集合<br>边的集合使用了很多相关的特征。<br>mesh 拥有的特性，卷积的相邻的元素是原始空间输入特征.</p><h1 id="Mesh-Convolution"><a href="#Mesh-Convolution" class="headerlink" title="Mesh Convolution"></a>Mesh Convolution</h1><p><img "" class="lazyload placeholder" data-original="/images/meshcnn/5.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>(e1, e2, e3, e4) = (|a − c|, a + c, |b − d|,b + d) 此而保证了旋转不变性</p><p>general matrix multiplication<br>(GEMM): by expanding (or unwrapping) the image into<br>a column matrix (i.e., im2col [Jia 2014]).</p><p>矩阵的卷积 可以展开为列矩阵的乘法.</p><p>nc × ne × 5 feature tensor, nc 是 特征向量的维数,ne 是边的数量, 5 是上述 定义的边</p><p>Therefore, we can control the desired resolution of the mesh after<br>each pooling operator, by adding a hyper-parameter which defines<br>the number of target edges in the pooled mesh<br>加入一个超参数定义池化之后的边数<br>querying special<br>data structures that are continually updated (see [Berg et al. 2008]<br>for details).</p><h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>本实验配置比较简单所以就没用docker 直接conda一下</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda activate meshcnn &amp;&amp; bash .&#x2F;scripts&#x2F;shrec&#x2F;train.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img "" class="lazyload placeholder" data-original="/images/meshcnn/7.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/meshcnn/8.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img "" class="lazyload placeholder" data-original="/images/meshcnn/6.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>在分类,segment(分割),还有human seg 上有特别好的效果</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mesh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Image2Mesh:A Learning Framework for Single Image 3D Reconstruction</title>
+      <link href="2019/07/08/3d-img2mesh/"/>
+      <url>2019/07/08/3d-img2mesh/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Image2Mesh-A-Learning-Framework-for-Single-Image-3D-Reconstruction"><a href="#Image2Mesh-A-Learning-Framework-for-Single-Image-3D-Reconstruction" class="headerlink" title="Image2Mesh: A Learning Framework for Single Image 3D Reconstruction"></a>Image2Mesh: A Learning Framework for Single Image 3D Reconstruction</h1><p>目前3d呈现数据中，都是使用体素，点云，类似的数据格式，但是这种方法有很大的弊端：</p><ol><li>计算复杂性</li><li>数据无序性</li><li>空间数据缺失</li></ol><p>本文提出的想法是，直接从复杂的mesh呈现中回归出模型结构，而不是直接输出一个mesh结构</p><h1 id="关键2大技术"><a href="#关键2大技术" class="headerlink" title="关键2大技术"></a>关键2大技术</h1><ol><li>FFD free-form deformation 自由变换</li><li>sparse linear combination 空间线性组合 </li></ol><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>人类认知物体是通过图片和我们脑子中的图像还原3d的呈现方式。而本文的想法是基于很多的CAD 模型开源之后，<br>获取先验数据可能作为基础启发的这篇论文。</p><p><img "" class="lazyload placeholder" data-original="/images/img2mesh/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mesh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MeshNet Mesh Neural Network for 3D Shape Representation</title>
+      <link href="2019/06/26/3d-meshnet/"/>
+      <url>2019/06/26/3d-meshnet/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation"><a href="#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation" class="headerlink" title="MeshNet Mesh Neural Network for 3D Shape Representation"></a>MeshNet Mesh Neural Network for 3D Shape Representation</h1><p>Mesh 是计算机图形学中一种特别常用的格式，一般叫做网格，如：特殊的三角网格。</p><p>本篇论文作者提出一个MeshNet 的网络，从而直接从Mesh数据中学习3D的呈现。比原先的数据格式达成的任务更好用。</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>对于3D 物体来说，总体来说有4种呈现方式</p><ol><li>volumetric grid</li><li>multi-view</li><li>point cloud</li><li>mesh</li></ol><h2 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h2><p>pointnet 提出了 一个Multi-Layer-Perceptron （MLP）操作 和一个对称函数。 详见我pointnet论文<br><img "" class="lazyload placeholder" data-original="/images/meshnet/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="mesh-之前的工作"><a href="#mesh-之前的工作" class="headerlink" title="mesh 之前的工作"></a>mesh 之前的工作</h2><p>[Kazhdan, Funkhouser, and Rusinkiewicz 2003] Kazhdan,<br>M.; Funkhouser, T.; and Rusinkiewicz, S. 2003. Rotation<br>Invariant Spherical Harmonic Representation of 3D Shape<br>Descriptors. In Symposium on Geometry Processing,<br>volume 6, 156–164.<br>只有 2003 年的 SPH 使用手写特征的方法。</p><h2 id="mesh-的-特征"><a href="#mesh-的-特征" class="headerlink" title="mesh 的 特征"></a>mesh 的 特征</h2><p>mesh 是一个集合，拥有点，边，表面的3D存储格式。Mesh 数据有复杂和不规律性</p><ol><li>复杂性体现在，mesh数据有很多不同类型的集合和很多的元素</li><li>不规律性体现在，mesh数据对于3D物体来说，有很多的数字</li></ol><p>总的来说，mesh数据中带有很多的信息，这些信息是比其他类型都要有效，所以在分类和识别的任务中可能会有更好的效果</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>作者将边和面的信息作为共享信息，从而做成了一个对称的方程。<br>作者提出神经网络对于网格3D 数据，并设计了一个层来抓取和聚合 polygon faces 的特征</p><h2 id="原先之前的工作"><a href="#原先之前的工作" class="headerlink" title="原先之前的工作"></a>原先之前的工作</h2><ol><li>基于 Voxel的模型  比如  3DShapeNets VoxNet FPNN Vote3D OCNN </li><li>基于 View 的方式  MVCNN GVCNN </li><li>基于 point 的方式 PointNet PointNet++  SO-Net  kernel correlation<br>network PointSIFT Kd-Net</li><li>混合方法  FusionNet PVNet</li></ol><h1 id="meshnet-的设计方式"><a href="#meshnet-的设计方式" class="headerlink" title="meshnet 的设计方式"></a>meshnet 的设计方式</h1><p>作者先介绍了 mesh 数据 和分析他的属性，mesh 数据 是 一个 点，边，以及表面的集合。<br>mesh数据，在3D的展示方面对其他的类型的数据有很强的优越性， mesh 数据会损失更多的数据。<br><img "" class="lazyload placeholder" data-original="/images/meshnet/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>所有的数据，使用了一个 角落，中心，邻边，以及法向量。<br>对于这样的网格复杂的问题，作者提出了2个想法。<br>为了减小数据组织，所有的单元，定义其联通，如果他们有一个相同的边，这样做有很多好处，第一简化了边之间的连接，使用一个对称的函数就可以解决无序性的问题。</p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>对于点来说，只需要知道空间位置，但是对于面的数据，我们不仅需要知道 空间位置，而且想知道 形状信息。 所以我们将 mesh 数据 分割成 <strong>空间特征</strong> 以及 <strong>结构特征</strong>。</p><ol><li>表面信息<ul><li>中心点</li><li>角向量</li><li>法向量</li></ul></li><li>邻边信息<ul><li>邻边下标</li></ul></li></ol><p>作者设计了2个模块分别适应<strong>空间信息</strong>和<strong>结构信息</strong>，并且设计了mesh 卷积块 去聚合信息<br>最后一个池化操作生成全局操作。</p><h2 id="空间和结构操作"><a href="#空间和结构操作" class="headerlink" title="空间和结构操作"></a>空间和结构操作</h2><p>作者将表面信息，分为空间信息和结构信息。</p><h3 id="Spatial-descriptor-空间信息"><a href="#Spatial-descriptor-空间信息" class="headerlink" title="Spatial descriptor 空间信息"></a>Spatial descriptor 空间信息</h3><p>作者还是使用MLP的方式 类似point could 里面的方式。</p><h3 id="Structural-descriptor-face-rotate-convolution-表面旋转卷积"><a href="#Structural-descriptor-face-rotate-convolution-表面旋转卷积" class="headerlink" title="Structural descriptor: face rotate convolution 表面旋转卷积"></a>Structural descriptor: face rotate convolution 表面旋转卷积</h3><p>其原理类似于 一个卷积操作<br>使用了 1/3（f(v1,v2)+f(v2,v3)+f(v1,v3)） 作为输出<br><img "" class="lazyload placeholder" data-original="/images/meshnet/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h3 id="Structural-descriptor-face-kernel-correlation-表面关联"><a href="#Structural-descriptor-face-kernel-correlation-表面关联" class="headerlink" title="Structural descriptor: face kernel correlation 表面关联"></a>Structural descriptor: face kernel correlation 表面关联</h3><p>KCNet (Shen et al. ), which uses kernel correlation (KC) (Tsin and Kanade 2004)<br>使用了KC 的核<br><img "" class="lazyload placeholder" data-original="/images/meshnet/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>公式中，使用了高斯核，目的是为了找到 第i个面与第k个核之间的距离最小</p><h2 id="mesh-convolution"><a href="#mesh-convolution" class="headerlink" title="mesh convolution"></a>mesh convolution</h2><p><img "" class="lazyload placeholder" data-original="/images/meshnet/5.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>作者设计了3种对称方程，最后发现 接MLP的那个最好</p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>和往常一样做好了docker 啦一下就行</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo docker run --rm -it --runtime&#x3D;nvidia --device&#x3D;&#x2F;dev&#x2F;video0 --shm-size 16G -e DISPLAY&#x3D;unix$DISPLAY -v &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix -v &#x2F;home&#x2F;cery&#x2F;workspace&#x2F;meshnet:&#x2F;meshnet  jsbluecat&#x2F;pytorch:meshnet bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img "" class="lazyload placeholder" data-original="/images/meshnet/6.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>模型展示<br><img "" class="lazyload placeholder" data-original="/images/meshnet/7.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/meshnet/8.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mesh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>斯坦福图形学入门学习01</title>
+      <link href="2019/06/21/3d-3dshape/"/>
+      <url>2019/06/21/3d-3dshape/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CS468-入门"><a href="#CS468-入门" class="headerlink" title="CS468 入门"></a>CS468 入门</h1><p>随着目前计算机的飞速发展,3d方面渐渐的越来越多的深入我们的生活,本教程将带领大家慢慢的接触3d方向的内容,但是本人是一个刚接触3d的小白,如果有讲的不对的地方,还请大家见谅.</p><h1 id="shape-analysis"><a href="#shape-analysis" class="headerlink" title="shape analysis"></a>shape analysis</h1><p>第一章: 图形分析<br>本教程是mit 的相关教程  可以访问 ![gdp.csail.mit.edu/6838_spring_2017.html] 查看</p><h2 id="geometric-data-analysis"><a href="#geometric-data-analysis" class="headerlink" title="geometric data analysis"></a>geometric data analysis</h2><ol><li>geometric data 作为 修饰词  叫做 地理坐标系数据的分析</li><li>geometric 作为修饰词 叫做 使用地理方法来分析数据</li></ol><h2 id="aplied-geometric-相关概念"><a href="#aplied-geometric-相关概念" class="headerlink" title="aplied geometric 相关概念"></a>aplied geometric 相关概念</h2><ol><li>理论工具</li><li>计算工具</li><li>应用区域</li></ol><h3 id="Euclidean-Geometry"><a href="#Euclidean-Geometry" class="headerlink" title="Euclidean Geometry"></a>Euclidean Geometry</h3><p>欧式几何</p><p>Riemannian viewpoint 黎曼观点<br>观察一个物体的测度,在地理坐标系中,只需要一个角度和距离就行<br>当正曲率的时候 3维的物体是封闭的  负曲率为发散的.</p><h3 id="Triangle-mesh"><a href="#Triangle-mesh" class="headerlink" title="Triangle mesh"></a>Triangle mesh</h3><p>引自危机百科<br>A triangle mesh is a type of polygon mesh in computer graphics. It comprises a set of triangles (typically in three dimensions) that are connected by their common edges or corners.</p><p>Many graphics software packages and hardware devices can operate more efficiently on triangles that are grouped into meshes than on a similar number of triangles that are presented individually. This is typically because computer graphics do operations on the vertices at the corners of triangles. With individual triangles, the system has to operate on three vertices for every triangle. In a large mesh, there could be eight or more triangles meeting at a single vertex - by processing those vertices just once, it is possible to do a fraction of the work and achieve an identical effect. In many computer graphics applications it is necessary to manage a mesh of triangles. The mesh components are vertices, edges, and triangles. An application might require knowledge of the various connections between the mesh components. These connections can be managed independently of the actual vertex positions. This document describes a simple data structure that is convenient for managing the connections. This is not the only possible data structure. Many other types exist and have support for various queries about meshes.</p><p>三角网格是一种空间网格系统,它由多个三角型组成(尤其是三维),由角和边组成.</p><p>许多图形软件包和硬件设备可以在分组为网格的三角形上比在单独呈现的相似数量的三角形上更有效地操作。这通常是因为计算机图形对三角形拐角处的顶点进行操作。对于单个三角形，系统必须在每个三角形的三个顶点上操作。在大型网格中，可能有八个或更多个三角形在单个顶点相遇 - 通过仅处理这些顶点一次，可以完成一部分工作并实现相同的效果。在许多计算机图形应用程序中，必须管理三角形网格。网格组件是顶点，边和三角形。应用程序可能需要了解网格组件之间的各种连接。可以独立于实际顶点位置来管理这些连接。本文档描述了一种便于管理连接的简单数据结构。这不是唯一可能的数据结构。存在许多其他类型并且支持关于网格的各种查询。</p><h3 id="Triangle-soup"><a href="#Triangle-soup" class="headerlink" title="Triangle soup"></a>Triangle soup</h3><p>When the faces of a polygon mesh are given but the connectivity is unknown, we must deal with of a polygon soup.</p><p>Polygon soup does not have any connectivity (each point has as many occurences as the number of polygons it belongs to).</p><h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p>图</p><h3 id="Point-cloud"><a href="#Point-cloud" class="headerlink" title="Point cloud"></a>Point cloud</h3><p>点云</p><h3 id="Pairwise-distance-matrix"><a href="#Pairwise-distance-matrix" class="headerlink" title="Pairwise distance matrix"></a>Pairwise distance matrix</h3><p>成对距离矩阵</p><h2 id="扁平三角网格组成的图像"><a href="#扁平三角网格组成的图像" class="headerlink" title="扁平三角网格组成的图像"></a>扁平三角网格组成的图像</h2><h3 id="三角网格能有曲率吗"><a href="#三角网格能有曲率吗" class="headerlink" title="三角网格能有曲率吗?"></a>三角网格能有曲率吗?</h3><p><img "" class="lazyload placeholder" data-original="/images/3d/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h3 id="convergence-and-structure"><a href="#convergence-and-structure" class="headerlink" title="convergence and structure"></a>convergence and structure</h3><p>拉普拉斯变换不适应所有的变换</p><h3 id="numerical-pde"><a href="#numerical-pde" class="headerlink" title="numerical pde"></a>numerical pde</h3><p>数值偏微分方程</p><h3 id="smooth-optimization"><a href="#smooth-optimization" class="headerlink" title="smooth optimization"></a>smooth optimization</h3><p>平滑优化</p><h3 id="discrete-optimization"><a href="#discrete-optimization" class="headerlink" title="discrete optimization"></a>discrete optimization</h3><p>离散优化</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>instagan</title>
+      <link href="2019/06/12/3d-instagan/"/>
+      <url>2019/06/12/3d-instagan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="instance-aware-GAN-InstaGAN"><a href="#instance-aware-GAN-InstaGAN" class="headerlink" title="instance-aware GAN (InstaGAN)"></a>instance-aware GAN (InstaGAN)</h1><p>先前的GAN 模型在 形状转换上有很多不足.<br>本文提出的gan 在综合 实例信息 和 物体风格的mask 矩阵结合</p><p>本文提出 context preserving loss</p><p>3个共享 </p><ol><li>实例增强的网络架构</li><li>内容呈现损失</li><li>连续mini-batch 训练技术</li></ol><h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><ol><li>首先提出一个网络 翻译 图片和相关数据集的实例</li><li>然后提出多实例的损失</li><li>最后提出单一gpu 的 mini batch 训练</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GAN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Fitting 3D Morphable Models using Local Features 解读</title>
+      <link href="2019/06/01/3d-3dmm/"/>
+      <url>2019/06/01/3d-3dmm/</url>
+      
+        <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>使用局部特征来适用3D的模型. 2D的人脸.<br>为了解决特征提取器不可微分的特性,本文引入了一个基于数据学习的级联回归方法.<br>本方法是一个可以应用在实际上的方法</p><h1 id="遇见的问题"><a href="#遇见的问题" class="headerlink" title="遇见的问题"></a>遇见的问题</h1><ol><li>现有的拟合方法话费太大时间.  但是大多他们使用的元素是 landmark,简单的特征. 和颜色信息, 以及 边缘分割图.</li><li>但是还没有人用过,HoG 和 旋转尺度不变 特征来检测, 因为他们不可微.</li></ol><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>本文使用 SIFT 的特征 和一个级联回归网络 有2个比较好的特征</p><h1 id="论文的布局"><a href="#论文的布局" class="headerlink" title="论文的布局"></a>论文的布局</h1><p>级联检测方法来优化可变模型的局部特征</p><h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><p>实验配置很麻烦,需要改CUDA 换 显卡的架构 一堆的C++文件<br>和往常一样,本人已经为大家做好了 docker 拉一下就行</p><pre class="line-numbers language-sheel" data-language="sheel"><code class="language-sheel">sudo docker pull jsbluecat&#x2F;3d:4dfacesudo docker run -it --runtime&#x3D;nvidia --device&#x3D;&#x2F;dev&#x2F;video0 -e DISPLAY&#x3D;unix$DISPLAY -v &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix jsbluecat&#x2F;3d:4dface bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">    <source id="mp4" src="https://www.shuky.cn:8001/images/upload/3dmm.mp4" type="video/mp4"></video>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Face </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Point Net 论文解读</title>
+      <link href="2019/05/31/3d-pointnet/"/>
+      <url>2019/05/31/3d-pointnet/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Point-Net"><a href="#Point-Net" class="headerlink" title="Point Net"></a>Point Net</h1><p>本篇论文，是点云的开山之作，主要的贡献<p style='color:red'>直接输入点云序列，得到实例分割以及物体分类的相关序列</p><br>效果类似于<br><img "" class="lazyload placeholder" data-original="/images/pointnet/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="在之前3D-点云遇见的问题"><a href="#在之前3D-点云遇见的问题" class="headerlink" title="在之前3D 点云遇见的问题"></a>在之前3D 点云遇见的问题</h1><h2 id="无序性："><a href="#无序性：" class="headerlink" title="无序性："></a>无序性：</h2><p>点云本质上是一长串点（nx3矩阵，其中n是点数）。在几何上，点的顺序不影响它在空间中对整体形状的表示，例如，相同的点云可以由两个完全不同的矩阵表示。<br><img "" class="lazyload placeholder" data-original="/images/pointnet/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>解决方案：</p><p>x代表点云中某个点，h代表特征提取层，g叫做对称方法，r代表更高维特征提取，最后接一个softmax分类。g可以是maxpooling或sumpooling，也就是说，最后的D维特征对每一维都选取N个点中对应的最大特征值或特征值总和，这样就可以通过g来解决无序性问题。pointnet采用了max-pooling策略。<br><img "" class="lazyload placeholder" data-original="/images/pointnet/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="旋转性："><a href="#旋转性：" class="headerlink" title="旋转性："></a>旋转性：</h2><p>相同的点云在空间中经过一定的刚性变化（旋转或平移），坐标发生变化</p><p>希望不论点云在怎样的坐标系下呈现，网络都能正确的识别出。这个问题可以通过STN（spacial transform netw）来解决。二维的变换方法可以参考这里，三维不太一样的是点云是一个不规则的结构（无序，无网格），不需要重采样的过程。pointnet通过学习一个矩阵来达到对目标最有效的变换。<br><img "" class="lazyload placeholder" data-original="/images/pointnet/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h1><p><img "" class="lazyload placeholder" data-original="/images/pointnet/5.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><ul><li>空间变换网络解决旋转问题：三维的STN可以通过学习点云本身的位姿信息学习到一个最有利于网络进行分类或分割的DxD旋转矩阵（D代表特征维度，pointnet中D采用3和64）。至于其中的原理，我的理解是，通过控制最后的loss来对变换矩阵进行调整，pointnet并不关心最后真正做了什么变换，只要有利于最后的结果都可以。pointnet采用了两次STN，第一次input transform是对空间中点云进行调整，直观上理解是旋转出一个更有利于分类或分割的角度，比如把物体转到正面；第二次feature transform是对提取出的64维特征进行对齐，即在特征层面对点云进行变换。</li><li>maxpooling解决无序性问题：网络对每个点进行了一定程度的特征提取之后，maxpooling可以对点云的整体提取出global feature。</li></ul><h1 id="复线实验"><a href="#复线实验" class="headerlink" title="复线实验"></a>复线实验</h1><p>pointnet官方是没有给docker 镜像的，本人直接给大家做好了镜像，直接跑就行了</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo docker pull jsbluecat&#x2F;pytorch:pointnetsudo docker run -it --runtime&#x3D;nvidia --device&#x3D;&#x2F;dev&#x2F;video0 -e DISPLAY&#x3D;unix$DISPLAY -v &#x2F;tmp&#x2F;.X11-unix:&#x2F;tpm&#x2F;.X11-unix jsbluecat&#x2F;pytorch:pointnet bsh# 训练cd utils &amp;&amp; python train_segmentation --dataset ..&#x2F;shapenetcore_partanno_segmentation_benchmark_v0 --nepoch&#x3D;200# 显示结果python show_seg.py --dataset ..&#x2F;shapenetcore_partanno_segmentation_benchmark_v0 -model .&#x2F;seg&#x2F;seg_model_Chair_199.pth --idx 50 --class_choice Chair<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><p><img "" class="lazyload placeholder" data-original="/images/pointnet/6.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg"><br>    <source id="mp4" src="https://www.shuky.cn:8001/images/upload/1.mp4" type="video/mp4"><br></video></p><h1 id="源码解读"><a href="#源码解读" class="headerlink" title="源码解读"></a>源码解读</h1><p>面谈</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Point Cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>upernet</title>
+      <link href="2018/09/13/3d-upernet/"/>
+      <url>2018/09/13/3d-upernet/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Unified-Perceptual-Parsing-for-Scene-Understanding"><a href="#Unified-Perceptual-Parsing-for-Scene-Understanding" class="headerlink" title="Unified Perceptual Parsing for Scene Understanding"></a>Unified Perceptual Parsing for Scene Understanding</h1><p>旷视科技提出统一感知解析网络UPerNet，优化场景理解</p><h1 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h1><p>能够识别一个场景中突出物体的检测，和优化纹理和理解。</p><h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>人类对世界的视觉理解是多层次的，可以轻松分类场景，检测其中的物体，乃至识别物体的部分、纹理和材质。在本文中，旷视科技提出一种称之为统一感知解析（Unified Perceptual Parsing/UPP）的新任务，要求机器视觉系统从一张图像中识别出尽可能多的视觉概念。同时，多任务框架 UPerNet 被提出，训练策略被开发以学习混杂标注（heterogeneous annotations）。旷视科技在 UPP 上对 UPerNet 做了基准测试，结果表明其可有效分割大量的图像概念。这一已训练网络进一步用于发现自然场景中的视觉知识。</p><h2 id="直观解释"><a href="#直观解释" class="headerlink" title="直观解释"></a>直观解释</h2><p><img "" class="lazyload placeholder" data-original="/images/upernet/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><h1 id="怎么解决的"><a href="#怎么解决的" class="headerlink" title="怎么解决的"></a>怎么解决的</h1><p>1.我们提出了一个新的解析任务Unified Perceptual Parsing，它要求系统一次解析多个视觉概念</p><p>2.我们提出了一个名为UPerNet的新型网络，它具有层次结构，可以从多个图像数据集中学习异构数据。</p><p>3.该模型显示能够联合推断和发现图像下方丰富的视觉知识。</p><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p><img "" class="lazyload placeholder" data-original="/images/upernet/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><h3 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h3><p><img "" class="lazyload placeholder" data-original="/images/upernet/3.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>使用特征金字塔的方式</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"> # FPN Moduleself.fpn_in &#x3D; []for fpn_inplane in fpn_inplanes[:-1]: # skip the top layer    self.fpn_in.append(nn.Sequential(        nn.Conv2d(fpn_inplane, fpn_dim, kernel_size&#x3D;1, bias&#x3D;False),        SynchronizedBatchNorm2d(fpn_dim),        nn.ReLU(inplace&#x3D;True)    ))self.fpn_in &#x3D; nn.ModuleList(self.fpn_in)self.fpn_out &#x3D; []for i in range(len(fpn_inplanes) - 1): # skip the top layer    self.fpn_out.append(nn.Sequential(        conv3x3_bn_relu(fpn_dim, fpn_dim, 1),    ))self.fpn_out &#x3D; nn.ModuleList(self.fpn_out)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="PPM"><a href="#PPM" class="headerlink" title="PPM"></a>PPM</h3><p><img "" class="lazyload placeholder" data-original="/images/upernet/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><pre class="line-numbers language-python" data-language="python"><code class="language-python"> # PPM Moduleself.ppm_pooling &#x3D; []self.ppm_conv &#x3D; []for scale in pool_scales:    self.ppm_pooling.append(nn.AdaptiveAvgPool2d(scale))    self.ppm_conv.append(nn.Sequential(        nn.Conv2d(fc_dim, 512, kernel_size&#x3D;1, bias&#x3D;False),        SynchronizedBatchNorm2d(512),        nn.ReLU(inplace&#x3D;True)    ))self.ppm_pooling &#x3D; nn.ModuleList(self.ppm_pooling)self.ppm_conv &#x3D; nn.ModuleList(self.ppm_conv)self.ppm_last_conv &#x3D; conv3x3_bn_relu(fc_dim + len(pool_scales)*512, fpn_dim, 1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="文章总结"><a href="#文章总结" class="headerlink" title="文章总结"></a>文章总结</h1><p>本文改进了 pspnet 的结构，加上了FPN 和 PPM 和 fusion 取得了良好的视觉效果</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> deep learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dcgan</title>
+      <link href="2018/09/05/3d-dcgan/"/>
+      <url>2018/09/05/3d-dcgan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="dcgan"><a href="#dcgan" class="headerlink" title="dcgan"></a>dcgan</h1><p>近年来监督学习的cnn发展特别的飞快，本文提出了无监督学习<br>在无标签数据库中重用一些特征变成了现在的热点。</p><h1 id="具体概括"><a href="#具体概括" class="headerlink" title="具体概括"></a>具体概括</h1><p>通过gan 来 训练 一组好的图片，然后通过g和d网络来提取特征 做 监督学习</p><p>做了2种贡献 </p><ul><li>第一让gan 的网络深度可以训练</li><li>第二对于无监督学习 提出了训练分类器D做图像分类任务相关的工作</li></ul><h2 id="主要的做法"><a href="#主要的做法" class="headerlink" title="主要的做法"></a>主要的做法</h2><p>1.在判别器模型中使用strided convolutions来替代空间池化（pooling），而在生成器模型中使用fractional strided convolutions，即deconv，反卷积层。<br>2.除了生成器模型的输出层和判别器模型的输入层，在网络其它层上都使用了Batch Normalization，使用BN可以稳定学习，有助于处理初始化不良导致的训练问题。<br>3.去除了全连接层，而直接使用卷积层连接生成器和判别器的输入层以及输出层。<br>4.在生成器的输出层使用Tanh激活函数，而在其它层使用ReLU；在判别器上使用leaky ReLU。</p><h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><p><img "" class="lazyload placeholder" data-original="/images/dcgan/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>通过从高维分布的单一向量，进行卷积和上采样，来生成训练的图片，从而达到无监督学习</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GAN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>OMDC</title>
+      <link href="2018/09/04/tztq-omdc/"/>
+      <url>2018/09/04/tztq-omdc/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Optimal-Margin-Distribution-Clustering"><a href="#Optimal-Margin-Distribution-Clustering" class="headerlink" title="Optimal Margin Distribution Clustering"></a>Optimal Margin Distribution Clustering</h1><p>优化边缘分布的一种聚类方法</p><h2 id="最大边际聚类（MMC"><a href="#最大边际聚类（MMC" class="headerlink" title="最大边际聚类（MMC)"></a>最大边际聚类（MMC)</h2><p>最大边际聚类（MMC）借用了支持向量机（SVM）的大边缘启发式.<br>最大最小边缘不一定 提升准确率 ， 而是要选取好的边缘分布</p><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>在本文中，我们提出一种新颖的方法ODMC（用于聚类的最佳边际分布机），它试图聚类数据并同时实现最佳边际分布。<br>具体来说，我们通过一阶和二阶统计量（即边际均值和方差）来表征边际分布，并扩展随机镜下降法以解决最终的极小极大问题</p><h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>发现 MMC 对于 边缘的分布的依赖，比边缘距离更加的重要</p><h1 id="机器学习的地位"><a href="#机器学习的地位" class="headerlink" title="机器学习的地位"></a>机器学习的地位</h1><p>聚类是机器学习的一个重要研究领域，旨在分组的数据挖掘和模式识别，数据点相似。</p><h1 id="聚类算法的发展史"><a href="#聚类算法的发展史" class="headerlink" title="聚类算法的发展史"></a>聚类算法的发展史</h1><ul><li>MMC 方法 最大svm 距离</li><li>半SDP 凸优化 使用半正定矩阵来限制边缘</li><li>tighter minimax relaxation  通过迭代生成最违反的标签来解决，然后通过多核学习将它们组合起来。</li><li>alternative optimization 通过顺序查找标签和优化支持向量回归（SVR）来执行聚类，并且约束凹凸程序</li><li>对mmc 进行改进(ODM)   优化边缘分布 </li><li>zhou 等人 提出了 exploit unlabeled data and handle unequal misclassification cost.</li><li>对于 MMC 提出了增强</li></ul><h1 id="作者提出的算法-ODMC"><a href="#作者提出的算法-ODMC" class="headerlink" title="作者提出的算法 ODMC"></a>作者提出的算法 ODMC</h1><p>在本文中，作者提出了一种新的方法——ODMC（Optimal margin Distribution Machine for Clustering，用于聚类的最优间隔分布机），该方法可以用于聚类并同时获得最优间隔分布。特别地，他们利用一阶和二阶统计量（即间隔均值和方差）描述间隔分布，然后应用 Li 等人 2009 年提出的极小极大凸松弛法（已证明比 SDP 松弛法更严格）以获得凸形式化（convex reformulation）。作者扩展了随机镜像下降法（stochastic mirror descent method）以求解因而产生的极小极大问题，在实际应用中可以快速地收敛。此外，我们理论上证明了 ODMC 与当前最佳的割平面算法有相同的收敛速率，但每次迭代的计算消耗大大降低，因此我们的方法相比已有的方法有更好的可扩展性。在 UCI 数据集上的大量实验表明 ODMC 显著地优于对比的方法，从而证明了最优间隔分布学习的优越性。</p><h2 id="实现途径"><a href="#实现途径" class="headerlink" title="实现途径"></a>实现途径</h2><p>使用第一和第二统计 来标记边缘分布，边缘的均值和变量。<br>svm 可以用来 最大或者最小训练数据的距离 。用来选择 hx 函数  就一个权重和feature map的乘积<br>导致的结果就似乎 svm 只包括一些数据  有 支持向量， 其余的都被忽略了，可能会 误导决策</p><p><img "" class="lazyload placeholder" data-original="/images/odmc/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/odmc/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>利用如上2个公式 使用了 surrogate loss  分割 svm 的支持向量的 结果<br>将原先的凸优化  转变成 由{0，1} 组成的 混合组成优化</p><h1 id="伪代码思想"><a href="#伪代码思想" class="headerlink" title="伪代码思想"></a>伪代码思想</h1><p><img "" class="lazyload placeholder" data-original="/images/odmc/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/odmc/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>机器学习，这块使用了大量的 统计方法，使得同分布。<br>这篇文章巧妙的将svm 分类之后的 边缘点 符合一种分布。最终使用  镜像梯度下降的方法。得到相同的准确率，但提升了迭代的效率</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 特征提取 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>darts</title>
+      <link href="2018/07/03/darts/"/>
+      <url>2018/07/03/darts/</url>
+      
+        <content type="html"><![CDATA[<h1 id="DARTS-Differentiable-Architecture-Search"><a href="#DARTS-Differentiable-Architecture-Search" class="headerlink" title="DARTS: Differentiable Architecture Search"></a>DARTS: Differentiable Architecture Search</h1><h2 id="指数级加速架构搜索：CMU提出基于梯度下降的可微架构搜索方法"><a href="#指数级加速架构搜索：CMU提出基于梯度下降的可微架构搜索方法" class="headerlink" title="指数级加速架构搜索：CMU提出基于梯度下降的可微架构搜索方法"></a>指数级加速架构搜索：CMU提出基于梯度下降的可微架构搜索方法</h2><p>与传统最优架构不同，DARTS提出了自学架构的方式</p><p>研究者称，<br>该方法已被证明在卷积神经网络和循环神经网络上都可以获得业内最优的效果，<br>而所用 GPU 算力有时甚至仅为此前搜索方法的 700 分之 1，这意味着单块 GPU 也可以完成任务。<br>该研究的论文《DARTS: Differentiable Architecture Search》<br>一经发出便引起了 Andrew Karpathy、Oriol Vinyals 等学者的关注。</p><h1 id="架构搜索在CNN-与-RNN-上的演示"><a href="#架构搜索在CNN-与-RNN-上的演示" class="headerlink" title="架构搜索在CNN 与 RNN 上的演示"></a>架构搜索在CNN 与 RNN 上的演示</h1><p><img "" class="lazyload placeholder" data-original="https://user-gold-cdn.xitu.io/2018/6/28/16444fbdf4b1e632?imageslim" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><p><img "" class="lazyload placeholder" data-original="https://user-gold-cdn.xitu.io/2018/6/28/16444fc14e4af4d6?imageslim" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>1.当前最佳的架构搜索算法尽管性能优越，但需要很高的计算开销。例如，在 CIFAR-10 和 ImageNet 上获得当前最佳架构需要强化学习的 1800 个 GPU 工作天数 (Zoph et al., 2017) 或进化算法的 3150 个 GPU 工作天数（Real et al., 2018）。 原因是因为架构搜索被当成一种在离散域上的黑箱优化问题，这导致需要大量的架构评估。</p><p>2.高效架构搜索方法 DARTS（可微架构搜索）。该方法不同于之前在候选架构的离散集上搜索的方式，而是将搜索空间松弛为连续的，从而架构可以通过梯度下降并根据在验证集上的表现进行优化。与基于梯度优化的数据有效性和低效的黑箱搜索相反，它允许 DARTS 使用少几个数量级的计算资源达到和当前最佳性能有竞争力的结果。它还超越了其它近期的高效架构搜索方法 ENAS（Pham et al., 2018b）。</p><h2 id="成就"><a href="#成就" class="headerlink" title="成就"></a>成就</h2><ul><li>使用 4 块 GPU：经过 1 天训练之后在 CIFAR-10 上达到了 2.83% 的误差；经过六小时训练后在 PTB 达到了 56.1 的困惑度，研究者将其归功于基于梯度的优化方法</li><li>在图像分类和语言建模任务上进行的大量实验表明：基于梯度的架构搜索在 CIFAR-10 上获得了极具竞争力的结果，在 PTB 上的性能优于之前最优的结果。这个结果非常有趣，要知道目前最好的架构搜索方法使用的是不可微搜索方法，如基于强化学习（Zoph et al., 2017）或进化（Real et al., 2018; Liu et al., 2017b）的方法。</li></ul><h1 id="原理剖析"><a href="#原理剖析" class="headerlink" title="原理剖析"></a>原理剖析</h1><p><img "" class="lazyload placeholder" data-original="https://user-gold-cdn.xitu.io/2018/6/28/16444fc14f7b5e90?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>图 1：DARTS 概述：（a）一开始并不知道对边缘的操作。（b）通过在每个边缘放置各种候选操作来连续放宽搜索空间。（c）通过求解二级（bilevel）优化问题，联合优化混合概率和网络权重。（d）从学习到的混合概率中归纳出最终的架构。</p><p>基于松弛空间，连续优化。（目前还不了解这里的数学理论，需要进一步研究）</p><h2 id="实验设备"><a href="#实验设备" class="headerlink" title="实验设备"></a>实验设备</h2><p>实验的所有设备都只基于一块 NVIDIA GTX 1080Ti<br><img "" class="lazyload placeholder" data-original="/images/darts/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>实验设别对比 结果发现   TITAN V 略逊色 Tesla  远超 1080ti<br>Tesla  &gt;  TITAN V  &gt; 1080 Ti</p><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p><img "" class="lazyload placeholder" data-original="/images/darts/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> </p><p><img "" class="lazyload placeholder" data-original="/images/darts/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>这里需要求2阶混合偏导数<br><img "" class="lazyload placeholder" data-original="/images/darts/4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>他把混合偏导，用导数定义法，近似成双边切线求导。<br>复杂度 从 O(a*w) 降为  O(a + w) </p><h1 id="与其他算法对比"><a href="#与其他算法对比" class="headerlink" title="与其他算法对比"></a>与其他算法对比</h1><p><img "" class="lazyload placeholder" data-original="https://user-gold-cdn.xitu.io/2018/6/28/16444fc168f2038a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>当前最优图像分类器在 CIFAR-10 上的对比结果。带有 † 标记的结果是使用本论文设置训练对应架构所得到的结果。</p><h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import namedtupleGenotype &#x3D; namedtuple(&#39;Genotype&#39;, &#39;normal normal_concat reduce reduce_concat&#39;)PRIMITIVES &#x3D; [    &#39;none&#39;,    &#39;max_pool_3x3&#39;,    &#39;avg_pool_3x3&#39;,    &#39;skip_connect&#39;,    &#39;sep_conv_3x3&#39;,    &#39;sep_conv_5x5&#39;,    &#39;dil_conv_3x3&#39;,    &#39;dil_conv_5x5&#39;]NASNet &#x3D; Genotype(  normal &#x3D; [    (&#39;sep_conv_5x5&#39;, 1),    (&#39;sep_conv_3x3&#39;, 0),    (&#39;sep_conv_5x5&#39;, 0),    (&#39;sep_conv_3x3&#39;, 0),    (&#39;avg_pool_3x3&#39;, 1),    (&#39;skip_connect&#39;, 0),    (&#39;avg_pool_3x3&#39;, 0),    (&#39;avg_pool_3x3&#39;, 0),    (&#39;sep_conv_3x3&#39;, 1),    (&#39;skip_connect&#39;, 1),  ],  normal_concat &#x3D; [2, 3, 4, 5, 6],  reduce &#x3D; [    (&#39;sep_conv_5x5&#39;, 1),    (&#39;sep_conv_7x7&#39;, 0),    (&#39;max_pool_3x3&#39;, 1),    (&#39;sep_conv_7x7&#39;, 0),    (&#39;avg_pool_3x3&#39;, 1),    (&#39;sep_conv_5x5&#39;, 0),    (&#39;skip_connect&#39;, 3),    (&#39;avg_pool_3x3&#39;, 2),    (&#39;sep_conv_3x3&#39;, 2),    (&#39;max_pool_3x3&#39;, 1),  ],  reduce_concat &#x3D; [4, 5, 6],)    AmoebaNet &#x3D; Genotype(  normal &#x3D; [    (&#39;avg_pool_3x3&#39;, 0),    (&#39;max_pool_3x3&#39;, 1),    (&#39;sep_conv_3x3&#39;, 0),    (&#39;sep_conv_5x5&#39;, 2),    (&#39;sep_conv_3x3&#39;, 0),    (&#39;avg_pool_3x3&#39;, 3),    (&#39;sep_conv_3x3&#39;, 1),    (&#39;skip_connect&#39;, 1),    (&#39;skip_connect&#39;, 0),    (&#39;avg_pool_3x3&#39;, 1),    ],  normal_concat &#x3D; [4, 5, 6],  reduce &#x3D; [    (&#39;avg_pool_3x3&#39;, 0),    (&#39;sep_conv_3x3&#39;, 1),    (&#39;max_pool_3x3&#39;, 0),    (&#39;sep_conv_7x7&#39;, 2),    (&#39;sep_conv_7x7&#39;, 0),    (&#39;avg_pool_3x3&#39;, 1),    (&#39;max_pool_3x3&#39;, 0),    (&#39;max_pool_3x3&#39;, 1),    (&#39;conv_7x1_1x7&#39;, 0),    (&#39;sep_conv_3x3&#39;, 5),  ],  reduce_concat &#x3D; [3, 4, 6])DARTS &#x3D; Genotype(normal&#x3D;[(&#39;sep_conv_3x3&#39;, 1), (&#39;sep_conv_3x3&#39;, 0), (&#39;skip_connect&#39;, 0), (&#39;sep_conv_3x3&#39;, 1), (&#39;skip_connect&#39;, 0), (&#39;sep_conv_3x3&#39;, 1), (&#39;sep_conv_3x3&#39;, 0), (&#39;skip_connect&#39;, 2)], normal_concat&#x3D;[2, 3, 4, 5], reduce&#x3D;[(&#39;max_pool_3x3&#39;, 0), (&#39;max_pool_3x3&#39;, 1), (&#39;skip_connect&#39;, 2), (&#39;max_pool_3x3&#39;, 0), (&#39;max_pool_3x3&#39;, 0), (&#39;skip_connect&#39;, 2), (&#39;skip_connect&#39;, 2), (&#39;avg_pool_3x3&#39;, 0)], reduce_concat&#x3D;[2, 3, 4, 5])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>可以看到是把所有结构都对应成数字，然后梯度下降学习这些数字，然后变化对于架构。</p><h1 id="开发环境-pytorch"><a href="#开发环境-pytorch" class="headerlink" title="开发环境 pytorch"></a>开发环境 pytorch</h1><p>pytorch  -&gt; onnx -&gt; tensorflow -&gt; tensorflow.js</p><p>各模型在各种场合的使用</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 强化学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 自架构搜索网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IrisFace</title>
+      <link href="2018/06/05/3d-irisface/"/>
+      <url>2018/06/05/3d-irisface/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基于虹膜和人脸检测的设想"><a href="#基于虹膜和人脸检测的设想" class="headerlink" title="基于虹膜和人脸检测的设想"></a>基于虹膜和人脸检测的设想</h1><p>在看了faceNet 使用 LMNN 预先学出距离矩阵，再根据resnet学习出来的模型进行分类，考虑到使用虹膜 叠加 人脸 的方式 增加分类的准确率</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><img "" class="lazyload placeholder" data-original="/images/iris/1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>发现国内有使用cnn 和 虹膜结合的，但和facenet 和虹膜结合的却没有发现</p><h1 id="测试-facenet-中-虹膜对分类结果的影响"><a href="#测试-facenet-中-虹膜对分类结果的影响" class="headerlink" title="测试 facenet 中 虹膜对分类结果的影响"></a>测试 facenet 中 虹膜对分类结果的影响</h1><p>首先用相同的图片进行测试<br><img "" class="lazyload placeholder" data-original="/images/iris/1.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>进行实验。<br><img "" class="lazyload placeholder" data-original="/images/iris/2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>结果显然，为 0 0  表示相同图片 </p><h1 id="使用黑色画笔将眼部区域涂黑"><a href="#使用黑色画笔将眼部区域涂黑" class="headerlink" title="使用黑色画笔将眼部区域涂黑"></a>使用黑色画笔将眼部区域涂黑</h1><p><img "" class="lazyload placeholder" data-original="/images/iris/2.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>使用这张进行 训练<br><img "" class="lazyload placeholder" data-original="/images/iris/3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>可以看到竟然 距离快接近1了，而我只是涂黑了眼睛</p><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>说明虹膜眼部对分类的影响确实有影响</p><h1 id="思考原因"><a href="#思考原因" class="headerlink" title="思考原因"></a>思考原因</h1><p>facenet 卷积出来的 feasure map 可能包含了眼部的特征，但是由于训练数据的像素原因，可能对虹膜的比重并不是学习的很大</p><h1 id="实验设想"><a href="#实验设想" class="headerlink" title="实验设想"></a>实验设想</h1><p>如果我可以使用 高精度摄影设备 拍摄的人脸图像，使用facenet 的模型继续训练，加大虹膜对预测的权重，比较的时候 再根据 高清度人脸 图像进行对比，那就能更大精度的提升人脸的分类熟悉</p><h1 id="实验局限"><a href="#实验局限" class="headerlink" title="实验局限"></a>实验局限</h1><p>由于带label 的 图片 难以获得，很难得到人脸预测的 高清度图片。<br>使得这个思路陷入了瓶颈，而且对于加入了虹膜后，肯定会使勿拒率的提升</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Face </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-188 Best Time to Buy and Sell Stock IV</title>
+      <link href="2018/05/15/leetcode-188/"/>
+      <url>2018/05/15/leetcode-188/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="Best Time to Buy and Sell Stock IV"></a>Best Time to Buy and Sell Stock IV</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>Design an algorithm to find the maximum profit. You may complete at most k transactions.<br><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [2,4,1], k &#x3D; 2Output: 2Explanation: Buy on day 1 (price &#x3D; 2) and sell on day 2 (price &#x3D; 4), profit &#x3D; 4-2 &#x3D; 2.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [3,2,6,5,0,3], k &#x3D; 2Output: 7Explanation: Buy on day 2 (price &#x3D; 2) and sell on day 3 (price &#x3D; 6), profit &#x3D; 6-2 &#x3D; 4.             Then buy on day 5 (price &#x3D; 0) and sell on day 6 (price &#x3D; 3), profit &#x3D; 3-0 &#x3D; 3.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def maxProfit(self, k, prices):        &quot;&quot;&quot;        :type k: int        :type prices: List[int]        :rtype: int        &quot;&quot;&quot;        n &#x3D; len(prices)        if k&gt;&#x3D;n&#x2F;&#x2F;2:return sum(i-j for i,j in zip(prices[1:],prices[0:-1]) if i&gt;j)        dp &#x3D; [[0] * n for _ in range(k+1)]        for i in range(1,k+1):            l &#x3D; [0] * n            for j in range(1,n):                p &#x3D; prices[j] -prices[j-1]                l[j] &#x3D; max(dp[i-1][j-1] + max(0,p),l[j-1]+p)                dp[i][j] &#x3D; max(dp[i][j-1],l[j])        return dp[-1][-1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>因为有k段 所以 开一个dp 二维  分别记录 天数和次数的影响，但是这还不够，因为当第k次的时候 超过就不能交易了，所以还要加一个l矩阵<br>来维护好不能超过第k次</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>O(n^2)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>faceNet - A Unified Embedding for Face Recognition and Clustering</title>
+      <link href="2018/05/10/3d-facenet/"/>
+      <url>2018/05/10/3d-facenet/</url>
+      
+        <content type="html"><![CDATA[<h1 id="A-Unified-Embedding-for-Face-Recognition-and-Clustering"><a href="#A-Unified-Embedding-for-Face-Recognition-and-Clustering" class="headerlink" title="A Unified Embedding for Face Recognition and Clustering"></a>A Unified Embedding for Face Recognition and Clustering</h1><p>本文主要是根据很多的论文集合成了一个人脸识别的算法。 直接学习从人脸图像到欧式空间的映射。这个映射就等价于人脸的相似程度。只要学习了空间就可以完成人脸的识别，分类，聚类。</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>使用了一个深度的卷积网络去优化了人脸认知的准确率，中间使用了128bit的脸部特征就行了，使用了。正确率达到了99.63%</p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>一旦空间学成，那么图片的识别就可以看作，距离阈值的取值，从而就可以变成knn,聚类问题。</p><p>之前的人脸识别的方法，是基于深度学习网络的 （classification layer）分类层 训练出人脸的特征，然后再用一个  bottleneck layer（瓶颈层）给出结果，这样做的缺点有 这个方法的不直接性，不准确性。 而且需要很多的维度，虽然有些算法用PCA 去投影降低了这个网络,但是这个线性变化完全可以用 1*1的网络去学习出来。</p><h2 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h2><p>作者 直接训练一个 128的紧密欧式空间 基于LMNN 算法(上篇算法有介绍),然后样例有2个匹配的脸和 1 个不匹配的脸。 缩略图是脸部区域的紧凑作物，除了执行缩放和平移之外，没有2D或3D对齐。 定义一个三元损失函数，去优化距离。</p><p>他们加了几个 1*1*d 的卷积层，和一个 混合层(mixed layers) 和 池化层 对齐这些输出。</p><p><img "" class="lazyload placeholder" data-original="/images/faceNet/tripleLoss.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>定义了一个三元损失函数,就直接反映了人脸的相似程度，作者发现 当L =<br><img "" class="lazyload placeholder" data-original="/images/faceNet/L.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> 的时候 最优</p><h2 id="cnn模型"><a href="#cnn模型" class="headerlink" title="cnn模型"></a>cnn模型</h2><p><img "" class="lazyload placeholder" data-original="/images/faceNet/table.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"> 的时候 最优</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 3D </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Face </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Distance Metric Learning for Large Margin Nearest Neighbor Classification</title>
+      <link href="2018/05/08/tztq-lmnn/"/>
+      <url>2018/05/08/tztq-lmnn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本文在马氏矩阵的基础上，kNN 是依赖于计算距离的矩阵。本文引入了 Mahalanobis distance metric 马氏距离矩阵。本方法基于，矩阵k阶相近的是相同的类别，不同的类别有着很大的距离，提出了新的分类LMNN对于knn的错误率有很大的优化</p><h2 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1. 优点"></a>1.1. 优点</h2><p>本方法不同于 SVM。在多聚类方面，不需要任何的修正和扩展函数   </p><h2 id="1-2-做法"><a href="#1-2-做法" class="headerlink" title="1.2. 做法"></a>1.2. 做法</h2><p>本文的方法增强了kNN的聚类效果，<br>有时如果对 训练数据 先分类，基于每个分类学习出一个个性矩阵，这样能更好的增加聚类效果</p><h1 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2. 介绍"></a>2. 介绍</h1><p>kNN的分类效果 很大程度基于 他的距离函数。如果没有先验标签，KNN 基本上都是基于 欧氏距离 （假设是向量输入）。<br>但是欧式距离没有考虑标签的统计相关，每个欧式相关会事先定义，就是2个相同的分类，相同的抽象数据，他们的距离函数都可能不相似。</p><p>作者发现 kNN 可以被 根据标签学习一个合适的距离矩阵 去优化</p><h2 id="2-1-算法特点"><a href="#2-1-算法特点" class="headerlink" title="2.1. 算法特点"></a>2.1. 算法特点</h2><p>增加训练样本的数量 通过一个 对欧式距离的线性变换。<br>线性变化 派生出 一个损失函数<br>第一个惩罚距离 是k阶邻近的距离<br>第二个 是2个不匹配标签的距离<br>这样一弄 增加了 标签匹配的k阶邻近样本空间<br>欧式距离  在新的样本空间上 可以被看做一个 马氏距离<br>本文就提出了 这种邻近。</p><h2 id="2-2-背景知识"><a href="#2-2-背景知识" class="headerlink" title="2.2. 背景知识"></a>2.2. 背景知识</h2><h3 id="2-2-1-Distance-Metric-Learning"><a href="#2-2-1-Distance-Metric-Learning" class="headerlink" title="2.2.1. Distance Metric Learning"></a>2.2.1. Distance Metric Learning</h3><p>首先距离向量要符合如下定义<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-1.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h3 id="2-2-2-距离投影"><a href="#2-2-2-距离投影" class="headerlink" title="2.2.2. 距离投影"></a>2.2.2. 距离投影</h3><p>使用PCA<br>$$<br>\overrightarrow {x’}=L\overrightarrow {x}<br>$$<br>先把输入矩阵x 投影成  \(x’\) 这里的投影矩阵 L 要符合 \(M=L^{T}L\) M要是个正定阵</p><p><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-2.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>那么这个距离矩阵的定义就可以这么写了。 作者把这种形式的伪度量称为Mahalanobis度量。</p><h3 id="2-2-3-基于特征值优化"><a href="#2-2-3-基于特征值优化" class="headerlink" title="2.2.3. 基于特征值优化"></a>2.2.3. 基于特征值优化</h3><p>类似我2DPCA篇介绍的 投影计算迹，很大程度上和特征向量相关</p><h3 id="2-2-4-linear-discriminant-analysis"><a href="#2-2-4-linear-discriminant-analysis" class="headerlink" title="2.2.4. linear discriminant analysis"></a>2.2.4. linear discriminant analysis</h3><p>LDA 计算类间和类内的协方差矩阵<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>然后 优化距离<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-4.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h1 id="3-模型"><a href="#3-模型" class="headerlink" title="3. 模型"></a>3. 模型</h1><p>本算法主要是把同类的距离拉近，异类的距离拉远<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-5.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>具体的损失函数定义如下：<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-6.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-7.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>总体的损失函数<br><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-8.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br>作者说  这个\(\mu\) 取0.5就可以，无所谓</p><p>Generally, the parameter μ can be tuned via cross validation, though in our experience, the results<br>from minimizing the loss function in Eq. (13) did not depend sensitively on the value of μ. In<br>practice, the value μ = 0.5 worked well.</p><h2 id="3-1-测试误差"><a href="#3-1-测试误差" class="headerlink" title="3.1. 测试误差"></a>3.1. 测试误差</h2><p><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-9.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="3-2-聚类"><a href="#3-2-聚类" class="headerlink" title="3.2. 聚类"></a>3.2. 聚类</h2><p><img "" class="lazyload placeholder" data-original="/images/LMNN/lmnn-10.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 特征提取 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-123 Best Time to Buy and Sell Stock</title>
+      <link href="2018/05/05/leetcode-123/"/>
+      <url>2018/05/05/leetcode-123/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Best-Time-to-Buy-and-Sell-Stock"><a href="#Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Best Time to Buy and Sell Stock"></a>Best Time to Buy and Sell Stock</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>Design an algorithm to find the maximum profit. You may complete at most two transactions.<br><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [3,3,5,0,0,3,1,4]Output: 6Explanation: Buy on day 4 (price &#x3D; 0) and sell on day 6 (price &#x3D; 3), profit &#x3D; 3-0 &#x3D; 3.             Then buy on day 7 (price &#x3D; 1) and sell on day 8 (price &#x3D; 4), profit &#x3D; 4-1 &#x3D; 3.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [1,2,3,4,5]Output: 4Explanation: Buy on day 1 (price &#x3D; 1) and sell on day 5 (price &#x3D; 5), profit &#x3D; 5-1 &#x3D; 4.             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are             engaging multiple transactions at the same time. You must sell before buying again.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>Example 3:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [7,6,4,3,1]Output: 0Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def maxProfit(self, prices):        &quot;&quot;&quot;        :type prices: List[int]        :rtype: int        &quot;&quot;&quot;        if len(prices) &lt;  2 : return 0        p &#x3D; []        ci , m  &#x3D; prices[0],0        for i in prices:            ci &#x3D; min(ci,i)            m &#x3D; max(m,i-ci)            p.append(m)        t,cm ,m&#x3D; 0,prices[-1],0        for i in range(len(prices)-1, -1, -1):            cm &#x3D; max(cm,prices[i])            m &#x3D; max(m,cm - prices[i])            t &#x3D; max(t,m + p[i])        return t<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>只做2次交易，第一次dp把之前的每天交易一次的最大值记录下来。之后自底向上去计算一次当前+之后的收益最大</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>时间复杂度O(n)  一重循环</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-121 Best Time to Buy and Sell Stock</title>
+      <link href="2018/05/03/leetcode-121/"/>
+      <url>2018/05/03/leetcode-121/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Best-Time-to-Buy-and-Sell-Stock"><a href="#Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Best Time to Buy and Sell Stock"></a>Best Time to Buy and Sell Stock</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.<br><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [7,1,5,3,6,4]Output: 5Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [7,6,4,3,1]Output: 0Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def maxProfit(self, A):        &quot;&quot;&quot;        :type prices: List[int]        :rtype: int        &quot;&quot;&quot;        if not A: return 0        mp,lv &#x3D; 0,A[0]        for num in A[1:]:            lv &#x3D; min(lv,num)            mp &#x3D; max(mp,num-lv)        return mp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>只能做一次交易，只需要找到全局的最小和全局的最大，那么就能找到答案</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>时间复杂度O(n)  一重循环</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-70. Climbing Stairs</title>
+      <link href="2018/05/03/leetcode-70/"/>
+      <url>2018/05/03/leetcode-70/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Climbing-Stairs"><a href="#Climbing-Stairs" class="headerlink" title="Climbing Stairs"></a>Climbing Stairs</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are climbing a stair case. It takes n steps to reach to the top.</p><p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: 2Output: 2Explanation: There are two ways to climb to the top.1. 1 step + 1 step2. 2 steps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: 3Output: 3Explanation: There are three ways to climb to the top.1. 1 step + 1 step + 1 step2. 1 step + 2 steps3. 2 steps + 1 step<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def climbStairs(self, n):        &quot;&quot;&quot;        :type n: int        :rtype: int        &quot;&quot;&quot;        a &#x3D; [1,2]        for i in range(2,n):            a.append(a[i-1]+a[i-2])        return a[n-1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>an = an-1 + an-2</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>时间复杂度O(n)  是一个斐波那契数列，如果 想要压复杂度可以见我的快速矩阵幂</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>knn</title>
+      <link href="2018/05/01/tztq-knn/"/>
+      <url>2018/05/01/tztq-knn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="kNN"><a href="#kNN" class="headerlink" title="kNN"></a>kNN</h1><p>kNN 是叫k阶邻近算法</p><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>主要是计算计算点到各已知点的距离，然后通过排序前k个样本，判断前k个样本的类别，来做出分类</p><p>(未完待续)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 特征提取 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-53 Maximum Subarray</title>
+      <link href="2018/05/01/leetcode-53/"/>
+      <url>2018/05/01/leetcode-53/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Maximum-Subarray"><a href="#Maximum-Subarray" class="headerlink" title="Maximum Subarray"></a>Maximum Subarray</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p><p><strong>Example:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: [-2,1,-3,4,-1,2,1,-5,4],Output: 6Explanation: [4,-1,2,1] has the largest sum &#x3D; 6.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def maxSubArray(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;        cs,s,e,cn,ma &#x3D; 0,0,1,nums[0],nums[0]        for i in range(len(nums)):            if i &#x3D;&#x3D; 0:continue            if nums[i] + cn &gt;&#x3D; nums[i]:                cn &#x3D; cn + nums[i]            else:                cn &#x3D; nums[i]                cs &#x3D; i            if ma &gt; cn:                pass            else:                ma  &#x3D; cn                s &#x3D; cs                e  &#x3D; i + 1        # print(s,e,ma,nums[s:e])        return ma        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>主要是考虑贪心算法，本题是求解最长连续子段和，使用的就是贪心，如果前面的加当前的是正的我们就认为他是有益的,否则就是有害的,从当前开始算</p><h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度  主要是 用了一个一维的循环  时间复杂度在 O(n)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-7 Reverse Integer</title>
+      <link href="2018/05/01/leetcode-7/"/>
+      <url>2018/05/01/leetcode-7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Reverse-Integer"><a href="#Reverse-Integer" class="headerlink" title="Reverse Integer"></a>Reverse Integer</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a 32-bit signed integer, reverse digits of an integer.<br><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: 123Output: 321<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: -123Output: -321<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>Example 3:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: 120Output: 21<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/** * @param &#123;number&#125; x * @return &#123;number&#125; */</span><span class="token keyword">var</span> <span class="token function-variable function">reverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">var</span> sign<span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token number">1</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    x<span class="token operator">=</span>Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">var</span> str<span class="token operator">=</span>x<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">var</span> result<span class="token operator">=</span>sign <span class="token operator">*</span> <span class="token function">Number</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token operator">></span><span class="token number">2147483647</span> <span class="token operator">||</span> result <span class="token operator">&lt;</span> <span class="token operator">-</span><span class="token number">2147483648</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">else</span> <span class="token keyword">return</span> result<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>将数字转化成字符串，再逆置输出，主要考虑爆int</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>时间复杂度O(n) 库函数的reverse 是 一重遍历</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-5 Longest Palindromic Substring</title>
+      <link href="2018/05/01/leetcode-5/"/>
+      <url>2018/05/01/leetcode-5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a>5. Longest Palindromic Substring</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p><p><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: &quot;babad&quot;Output: &quot;bab&quot;Note: &quot;aba&quot; is also a valid answer.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">Input: &quot;cbbd&quot;Output: &quot;bb&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def longestPalindrome(self, s):        &quot;&quot;&quot;        :type s: str        :rtype: str        &quot;&quot;&quot;        return self.manacher(s)    def manacher(self,s):        ts &#x3D; &#39;#&#39; + &#39;#&#39;.join(s) + &#39;#&#39;        print(ts)        r &#x3D; [0] * len(ts)        m ,mr , p ,ind &#x3D; 0,0,0,0        for i in range(len(ts)):            if i&lt;mr:                r[i] &#x3D; min(r[2*p-i],mr - i)            else:                r[i] &#x3D; 1            ## enlarge            while i - r[i] &gt;&#x3D;0 and i + r[i]&lt; len(ts) and ts[i-r[i]] &#x3D;&#x3D; ts[i+r[i]]:                r[i] +&#x3D;1            if i+r[i] - 1 &gt; mr:                mr &#x3D; i+r[i] - 1                p &#x3D; i            if m&lt;r[i]:                m  &#x3D; r[i]                ind &#x3D; i            else:                pass        return ts[ind-m+1:ind+m-1].replace(&#39;#&#39;,&#39;&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>本题主要使用的是 马拉车算法 加入#分割字符，然后不断的向外扩展回文串。</p><pre class="line-numbers language-none"><code class="language-none">aba  ———&gt;  #a#b#a#abba ———&gt;  #a#b#b#a#<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">char:    # a # b # a # RL :    1 2 1 4 1 2 1RL-1:    0 1 0 3 0 1 0  i :    0 1 2 3 4 5 6char:    # a # b # b # a # RL :    1 2 1 2 5 2 1 2 1RL-1:    0 1 0 1 4 1 0 1 0  i :    0 1 2 3 4 5 6 7 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img "" class="lazyload placeholder" data-original="/images/manacher.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>如图所示pos是当前回文的中心点，maxright 是回文的扩展位置。</p><h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>主要是扩展字符串的长度 时间复杂度O(n) 空间复杂度O(n)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> string </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2DPCA</title>
+      <link href="2018/04/30/tztq-2dpca/"/>
+      <url>2018/04/30/tztq-2dpca/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Two-dimensional-PCA-a-new-approach-to-appearance-based-face-representation-and-recognition-读后感"><a href="#Two-dimensional-PCA-a-new-approach-to-appearance-based-face-representation-and-recognition-读后感" class="headerlink" title="Two-dimensional-PCA-a-new-approach-to-appearance-based-face-representation-and-recognition 读后感"></a>Two-dimensional-PCA-a-new-approach-to-appearance-based-face-representation-and-recognition 读后感</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>本文介绍了传统的 ICA 方法和 PCA 方法更好的 2DPCA 方法。2DPCA 是 2维的 PCA 识别。PCA 是 principal component analysis 缩写。 中文解释为特征分析</p><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>本文的数据集的人脸分析是存在于<br>ORL, AR, Yale face 这3种人脸数据库。</p><h3 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h3><p>主要是基于面部特征分类，重组，从而识别人类面部。<br>比较方法是基于协方差矩阵。<br>但是PCA有个缺点，他很难抓住特征点，除非特征点直接写在数据集中。<br>所以作者想了一种新的方法 elastic bunch<br>graph matching 一种基于特征值的算法</p><h3 id="ICA"><a href="#ICA" class="headerlink" title="ICA"></a>ICA</h3><p>是 independent component<br>analysis 的缩写，面部分割在拼接，这样做是不会影响正确率的在协方差的方面</p><h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>PCA 和 ICA  余弦方面ICA 比较的优秀，而如果使用了欧氏距离，2者相似</p><p>时间复杂度方面  ICA &gt; K PCA &gt; PCA </p><h2 id="2DPCA"><a href="#2DPCA" class="headerlink" title="2DPCA"></a>2DPCA</h2><p>作者现在 发现PCA 很难把高维的图片抽象成一个协方差矩阵 因为 他的训练集的相关和图片大小</p><p>为了解决这种问题，作者引入了 SVD 奇异值分解</p><p><em>ps：不懂的人，去恶补线代.看不懂，别学了，退学！（zzy名言）</em></p><p>现在 2DPCA 可以直接抽象出面部特征，因为2DPCA 直接基于2维数组，而不是一维的向量。2维不需要直接转换成1维的</p><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p><em>终于开始研究算法，前面都是废话。好了开始上算法，老铁抓稳了~</em></p><p>我们现在直接基于 A 是给定的图像矩阵 n*m维度的<br>$$<br>Y = AX<br>$$<br>其中X为 m维的一个列向量，我们把A 基于X方向的投影抽象成一个矩阵Y，Y就是抽象出来的特征的投影向量。我们的目标是来评估一个协方差矩阵，最后根据协方差来划定阈值，判断图片是否为对应的图片。</p><p>那么我们的目标就是找到这个X方向的投影向量，通俗来说就是列变换向量。</p><p>这里引入了<br>$$<br>J(X) = tr(S_x)<br>$$<br>\(S_x\) 是指协方差矩阵。<br><em>那么什么是协方差矩阵呢？小伙伴又不明白了！</em></p><h4 id="协防差矩阵"><a href="#协防差矩阵" class="headerlink" title="协防差矩阵"></a>协防差矩阵</h4><p>这里引入了 wikipedia 上的协方差定义<br><img "" class="lazyload placeholder" data-original="/images/cov1.svg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"><br><em>泪崩，不由得惊叹考研害死人啊，惯性思维</em><br>印象中<br>$$<br>COV(X,Y)=E(XY)-E(X)*E(Y)<br>$$<br><em>是不是很坑？</em></p><p>而协方差举证 就是 每一个<br>$$<br>COV(X_i,X_j)<br>$$<br>就是类似于<br><img "" class="lazyload placeholder" data-original="/images/covm.svg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p><em>为什么有个=号呢，请原谅我懒不高兴自己写</em></p><p>好了，那个这个协方差矩阵就好办了<br>$$<br>\Sigma = E[(X-E[X])*(X-E[X])^{T}]<br>$$<br>附上特性<br><img "" class="lazyload placeholder" data-original="/images/covmc.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h3 id="求解-S-x"><a href="#求解-S-x" class="headerlink" title="求解\(S_x\)"></a>求解\(S_x\)</h3><p>$$<br>S_x = E[(Y-E[Y])(Y-E[Y])^T]=E[[AX-E(AX)][AX-E(AX)]^T]=E[((A-EA)X)([A-EA]X)^T]<br>$$<br>我们来求迹<br>$$<br>tr(S_X)=X^T[E(A-EA)^T(A-EA)]X<br>$$<br>其中 X为列向量， 一个列向量的迹是<br>\(X^TX\)<br>线代基础<br>协方差的特性是他是个列向量和行向量的乘积矩阵那么做就行了</p><p>现在我们令<br>$$<br>G_t=E[(A-EA)^T(A-EA)]<br>$$<br>其中E就是期望了，就是A的均值，我们以求和的方式重新定义G<br>$$<br>G_t=\dfrac {1}{M}\sum ^{M}_{j=1}(A_j-\overline {A})^T(A_j-\overline {A})<br>$$</p><p>\(\overline {A}\) 代表着M个图片的均值</p><p>好了重写下 J(X)<br>$$<br>J(X) = X^TG_tX<br>$$<br>X是标准列向量，J(X)称为广义扩散准则<br>一个J(X) 是不够的 所以需要一组的 Xi 然后去优化他的，Xi 和 Xj 是对应正交的</p><p>\(G_t\) 对应前d个特征向量值</p><h3 id="提取特征"><a href="#提取特征" class="headerlink" title="提取特征"></a>提取特征</h3><p>$$<br>[Y_1,Y_2,Y_3,…]^T = A[X_1,X_2,X_3,..]^T<br>$$</p><p>这样总的矩阵Y 就是一个 2维度的，他的特征就是一个一维的向量，而PCA的特征只是一个点</p><h3 id="基于欧式距离的协方差矩阵判断"><a href="#基于欧式距离的协方差矩阵判断" class="headerlink" title="基于欧式距离的协方差矩阵判断"></a>基于欧式距离的协方差矩阵判断</h3><p>$$<br>B_i = [Y^{(i)}_1,Y^{(i)}_2,…]<br>$$</p><p>$$<br>B_j = [Y^{(j)}_1,Y^{(j)}_2,…]<br>$$</p><p>$$<br>d(B_i,B_j)=\sum^d_{k=1}</p><!-- \left\|Y^{i}_{k}-Y^{j}_{k}\right\|_{2} --><p>$$</p><p>如果<br>$$<br>d(B,B_l)=mind(B,B_j)<br>$$<br>\(B_l\)是给定的一个正确的图片，如果B和\(B_j\)的欧式距离和最优的欧式距离相等，就认为B是正确的</p><h2 id="基于2DPCA-的图像识别"><a href="#基于2DPCA-的图像识别" class="headerlink" title="基于2DPCA 的图像识别"></a>基于2DPCA 的图像识别</h2><p>把\(G_t\) 的最大的前d个特征值对饮的特征项向量 记为 X(1-k) 记为U  然后对应的 Y(1-k) 记为 V</p><p>$$<br>V=[Y_1,Y_2,Y_3,…]<br>U = [X_1,X_2,X_3,..]<br>$$</p><p>$$<br>    V = AU<br>$$</p><p>X(1-k) 是正交的</p><p>所以 可以把 A 重组出来的</p><p>$$<br>\begin{aligned}\sim \\ D\end{aligned}  = VU^T = \sum^d_{k=1} Y_k X^T_k<br>$$</p><p>其中如果 d = n 就能还原 A 图像，不丢失任何信息，而如果 d &lt; n 那么就能得到 和 A 近似的矩阵</p><h2 id="实验数据集"><a href="#实验数据集" class="headerlink" title="实验数据集"></a>实验数据集</h2><p>基于 ORL 数据库的 的图像比较.</p><p>实验证明，最大的几个特征值，能够使还原的图像接近于原图，所以我们可以用 前k个特征向量去替换A</p><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>正确率<br><img "" class="lazyload placeholder" data-original="/images/2dpcaa.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>时间<br><img "" class="lazyload placeholder" data-original="/images/2dpcat.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><p>和其他算法的对比<br><img "" class="lazyload placeholder" data-original="/images/2dpcaica.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>2DPCA 的优点主要抽象了个特征维度的矩阵，使用了特征向量正交的特性，使计算的复杂性变的很低，对于 矩阵的n次方。 n 如果很大会接近一个 特定的矩阵 是和他最大的特征向量相似。</p><p>其实这个算法就是基于了这个特性，把特征值抽象出来，因为是可逆线性变换所以可以无损还原原图，如果矩阵非满秩，把最大的特征值抽象出来，是可以最大程度接近原图，这样的 一维的计算复杂度 就可以大大的降低</p><p>为什么正确率优化了呢，因为使用了全局的贪心算法，使得 抽象出来的n个特征值，基于欧式距离的值最短</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 特征提取 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leet-code-3 Longest Substring Without Repeating Characters</title>
+      <link href="2018/04/29/leetcode-3/"/>
+      <url>2018/04/29/leetcode-3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Longest-Substring-Without-Repeating-Characters"><a href="#Longest-Substring-Without-Repeating-Characters" class="headerlink" title="Longest Substring Without Repeating Characters"></a>Longest Substring Without Repeating Characters</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a string, find the length of the longest substring without repeating characters.</p><p>Examples:</p><p>Given <strong>“abcabcbb”</strong>, the answer is <strong>“abc”</strong>, which the length is 3.</p><p>Given <strong>“bbbbb”</strong>, the answer is <strong>“b”</strong>, with the length of 1.</p><p>Given <strong>“pwwkew”</strong>, the answer is <strong>“wke”</strong>, with the length of 3. Note that the answer must be a substring, <strong>“pwke”</strong> is a subsequence and not a substring.</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def lengthOfLongestSubstring(self, s):        &quot;&quot;&quot;        :type s: str        :rtype: int        &quot;&quot;&quot;        sr &#x3D; m &#x3D; 0        u &#x3D; &#123;&#125;        for i in range(len(s)):            if s[i] in u and sr&lt;&#x3D; u[s[i]]:                sr &#x3D; u[s[i]] + 1            else:                m  &#x3D; max (m,i-sr+1)            u[s[i]] &#x3D; i        return m<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>使用hash_table来记录。abc 我们记录下标 然后每次的数我们看它是否在table里面，如果遇见重复的就维护好起始串的位置，求出最大的长度</p><h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>时间复杂度O(n),hash_table底层是红叉树，算法的复杂度是 O(log\(_m\)p) 其中m,p均为常数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> hash_table </tag>
+            
+            <tag> string </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leet-code-4 Median of Two Sorted Arrays</title>
+      <link href="2018/04/29/leetcode-4/"/>
+      <url>2018/04/29/leetcode-4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Median-of-Two-Sorted-Arrays"><a href="#Median-of-Two-Sorted-Arrays" class="headerlink" title="Median of Two Sorted Arrays"></a>Median of Two Sorted Arrays</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p><p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p><p><strong>Example 1:</strong></p><pre class="line-numbers language-none"><code class="language-none">nums1 &#x3D; [1, 3]nums2 &#x3D; [2]The median is 2.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>Example 2:</strong></p><pre class="line-numbers language-none"><code class="language-none">nums1 &#x3D; [1, 2]nums2 &#x3D; [3, 4]The median is (2 + 3)&#x2F;2 &#x3D; 2.5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:    def findMedianSortedArrays(self, A, B):        &quot;&quot;&quot;        :type nums1: List[int]        :type nums2: List[int]        :rtype: float        &quot;&quot;&quot;        l &#x3D; len(A) + len(B)        if l%2 !&#x3D;0:            return self.kth(A,B,l&#x2F;&#x2F;2)        else:            return (self.kth(A,B,l&#x2F;&#x2F;2) + self.kth(A,B,l&#x2F;&#x2F;2 -1))&#x2F;2    def kth(self,a,b,k):        if not a: return b[k]        if not b: return a[k]        ia,ib &#x3D; len(a)&#x2F;&#x2F;2, len(b)&#x2F;&#x2F;2        ma,mb &#x3D; a[ia],b[ib]        if ia+ib &lt; k:            if ma &gt; mb:                return self.kth(a,b[ib+1:],k-ib-1)            else:                return self.kth(a[ia+1:],b,k-ia-1)        else:            if ma&gt;mb:                return self.kth(a[:ia],b,k)            else:                return self.kth(a,b[:ib],k)            <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>主要是递归的思想，找到第k的数，</p><pre><code>      left_part          |        right_partA[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]B[0], B[1], ..., B[j-1]  |  B[j], B[j+1],</code></pre><p>如图所示 我们找到两边的中值，去比较，然后扔掉小的左半部分，扔掉大的右半部分。维护好k所在的位置。</p><h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>时间复杂O(n+m) 空间复杂O(n+m)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> array </tag>
+            
+            <tag> binary_search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leet-code-2. Add Two Numbers</title>
+      <link href="2018/04/29/leetcode-2/"/>
+      <url>2018/04/29/leetcode-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p><p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p><pre class="line-numbers language-none"><code class="language-none">Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)Output: 7 -&gt; 0 -&gt; 8Explanation: 342 + 465 &#x3D; 807.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.# class ListNode(object):#     def __init__(self, x):#         self.val &#x3D; x#         self.next &#x3D; Noneclass Solution(object):    def addTwoNumbers(self, l1, l2):        &quot;&quot;&quot;        :type l1: ListNode        :type l2: ListNode        :rtype: ListNode        &quot;&quot;&quot;        dummy &#x3D; cur &#x3D; ListNode(0)        carry &#x3D; 0        while l1 or l2 or carry:            if l1:                carry +&#x3D; l1.val                l1 &#x3D; l1.next            if l2:                carry +&#x3D; l2.val                l2 &#x3D; l2.next            cur.next &#x3D; ListNode(carry%10)            cur &#x3D; cur.next            carry &#x2F;&#x2F;&#x3D; 10        return dummy.next<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>基于链表的相加。python是浅赋值，所以指向的是地址。</p><h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>时间复杂度是O(n+m)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linklist </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leet-code-1 Two Sum</title>
+      <link href="2018/04/29/leetcode-1/"/>
+      <url>2018/04/29/leetcode-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p><p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p><pre class="line-numbers language-none"><code class="language-none">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,return [0, 1].<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):    def twoSum(self, nums, target):        if len(nums) &lt;&#x3D; 1:            return False        buff_dict &#x3D; &#123;&#125;        for i in range(len(nums)):            if nums[i] in buff_dict:                return [buff_dict[nums[i]], i]            else:                buff_dict[target - nums[i]] &#x3D; i<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>使用hash_table来记录。a+b=c 我们记录 c-a 然后每次的b和table中的比较。这样就会发现了。</p><h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>时间复杂度O(n),hash_table底层是红叉树，算法的复杂度是 O(log\(_m\)p) 其中m,p均为常数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+            <tag> hash_table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

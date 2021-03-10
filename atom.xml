@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Cery的个人博客</title>
+  
+  
+  <link href="https://jsbluecat.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://jsbluecat.github.io/"/>
+  <updated>2021-03-10T10:21:12.480Z</updated>
+  <id>https://jsbluecat.github.io/</id>
+  
+  <author>
+    <name>Cery Zhai</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工作中用到的一些小tips</title>
+    <link href="https://jsbluecat.github.io/2021/03/10/megvii-utils/"/>
+    <id>https://jsbluecat.github.io/2021/03/10/megvii-utils/</id>
+    <published>2021-03-10T10:18:33.000Z</published>
+    <updated>2021-03-10T10:21:12.480Z</updated>
+    
+    
+    
+    
+    <category term="megvii" scheme="https://jsbluecat.github.io/categories/megvii/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 代码分析</title>
+    <link href="https://jsbluecat.github.io/2021/03/10/leetcode-index/"/>
+    <id>https://jsbluecat.github.io/2021/03/10/leetcode-index/</id>
+    <published>2021-03-10T08:13:36.000Z</published>
+    <updated>2021-03-10T09:01:29.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;本人分析过的leetcode题目，未完待续…&quot;&gt;&lt;a href=&quot;#本人分析过的leetcode题目，未完待续…&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://jsbluecat.github.io/categories/leetcode/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ycm hack</title>
+    <link href="https://jsbluecat.github.io/2021/01/23/megvii-ycm/"/>
+    <id>https://jsbluecat.github.io/2021/01/23/megvii-ycm/</id>
+    <published>2021-01-23T14:28:23.000Z</published>
+    <updated>2021-03-10T10:19:54.985Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装ycm的时候出现-mrab-regex-socks5-错误&quot;&gt;&lt;a href=&quot;#安装ycm的时候出现-mrab-regex-socks5-错误&quot; class=&quot;headerlink&quot; title=&quot;安装ycm的时候出现 mrab-regex socks5</summary>
+        
+      
+    
+    
+    
+    <category term="megvii" scheme="https://jsbluecat.github.io/categories/megvii/"/>
+    
+    
+    <category term="ycm" scheme="https://jsbluecat.github.io/tags/ycm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>megvii-01</title>
+    <link href="https://jsbluecat.github.io/2020/11/11/megvii-01/"/>
+    <id>https://jsbluecat.github.io/2020/11/11/megvii-01/</id>
+    <published>2020-11-11T01:08:42.000Z</published>
+    <updated>2021-03-10T10:21:01.248Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Background-MegEngine-Reading&quot;&gt;&lt;a href=&quot;#Background-MegEngine-Reading&quot; class=&quot;headerlink&quot; title=&quot;Background - MegEngine</summary>
+        
+      
+    
+    
+    
+    <category term="megvii" scheme="https://jsbluecat.github.io/categories/megvii/"/>
+    
+    
+    <category term="旷视觉天元开源框架" scheme="https://jsbluecat.github.io/tags/%E6%97%B7%E8%A7%86%E8%A7%89%E5%A4%A9%E5%85%83%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HOW POWERFUL ARE GRAPH NEURAL NETWORKS?</title>
+    <link href="https://jsbluecat.github.io/2019/07/17/3d-ginconv/"/>
+    <id>https://jsbluecat.github.io/2019/07/17/3d-ginconv/</id>
+    <published>2019-07-17T01:29:18.000Z</published>
+    <updated>2021-03-10T09:24:10.713Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;HOW-POWERFUL-ARE-GRAPH-NEURAL-NETWORKS&quot;&gt;&lt;a href=&quot;#HOW-POWERFUL-ARE-GRAPH-NEURAL-NETWORKS&quot; class=&quot;headerlink&quot; title=&quot;HOW POWERFUL</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Graph Convolution" scheme="https://jsbluecat.github.io/tags/Graph-Convolution/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SEMI-SUPERVISED CLASSIFICATION WITH GRAPH CONVOLUTIONAL NETWORKS</title>
+    <link href="https://jsbluecat.github.io/2019/07/16/3d-gcn/"/>
+    <id>https://jsbluecat.github.io/2019/07/16/3d-gcn/</id>
+    <published>2019-07-16T02:31:36.000Z</published>
+    <updated>2021-03-10T09:22:30.085Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SEMI-SUPERVISED-CLASSIFICATION-WITH-GRAPH-CONVOLUTIONAL-NETWORKS&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Graph Convolution" scheme="https://jsbluecat.github.io/tags/Graph-Convolution/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SplineCNN:Fast Geometric Deep Learning with Continuous B-Spline Kernels</title>
+    <link href="https://jsbluecat.github.io/2019/07/15/3d-splinecnn/"/>
+    <id>https://jsbluecat.github.io/2019/07/15/3d-splinecnn/</id>
+    <published>2019-07-15T03:27:56.000Z</published>
+    <updated>2021-03-10T09:22:16.453Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SplineCNN-Fast-Geometric-Deep-Learning-with-Continuous-B-Spline-Kernels&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Graph Convolution" scheme="https://jsbluecat.github.io/tags/Graph-Convolution/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meshcnn</title>
+    <link href="https://jsbluecat.github.io/2019/07/10/3d-meshcnn/"/>
+    <id>https://jsbluecat.github.io/2019/07/10/3d-meshcnn/</id>
+    <published>2019-07-10T06:54:15.000Z</published>
+    <updated>2021-03-10T09:23:50.377Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MeshCNN-A-Network-with-an-Edge&quot;&gt;&lt;a href=&quot;#MeshCNN-A-Network-with-an-Edge&quot; class=&quot;headerlink&quot; title=&quot;MeshCNN: A Network with an</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Mesh" scheme="https://jsbluecat.github.io/tags/Mesh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Image2Mesh:A Learning Framework for Single Image 3D Reconstruction</title>
+    <link href="https://jsbluecat.github.io/2019/07/08/3d-img2mesh/"/>
+    <id>https://jsbluecat.github.io/2019/07/08/3d-img2mesh/</id>
+    <published>2019-07-07T23:35:11.000Z</published>
+    <updated>2021-03-10T09:24:00.833Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Image2Mesh-A-Learning-Framework-for-Single-Image-3D-Reconstruction&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Mesh" scheme="https://jsbluecat.github.io/tags/Mesh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MeshNet Mesh Neural Network for 3D Shape Representation</title>
+    <link href="https://jsbluecat.github.io/2019/06/26/3d-meshnet/"/>
+    <id>https://jsbluecat.github.io/2019/06/26/3d-meshnet/</id>
+    <published>2019-06-26T01:20:32.000Z</published>
+    <updated>2021-03-10T09:23:40.153Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation&quot;&gt;&lt;a href=&quot;#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Mesh" scheme="https://jsbluecat.github.io/tags/Mesh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>斯坦福图形学入门学习01</title>
+    <link href="https://jsbluecat.github.io/2019/06/21/3d-3dshape/"/>
+    <id>https://jsbluecat.github.io/2019/06/21/3d-3dshape/</id>
+    <published>2019-06-21T07:34:56.000Z</published>
+    <updated>2021-03-10T09:24:37.105Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;CS468-入门&quot;&gt;&lt;a href=&quot;#CS468-入门&quot; class=&quot;headerlink&quot; title=&quot;CS468 入门&quot;&gt;&lt;/a&gt;CS468</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>instagan</title>
+    <link href="https://jsbluecat.github.io/2019/06/12/3d-instagan/"/>
+    <id>https://jsbluecat.github.io/2019/06/12/3d-instagan/</id>
+    <published>2019-06-12T09:09:34.000Z</published>
+    <updated>2021-03-10T09:22:57.709Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;instance-aware-GAN-InstaGAN&quot;&gt;&lt;a href=&quot;#instance-aware-GAN-InstaGAN&quot; class=&quot;headerlink&quot; title=&quot;instance-aware GAN</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="GAN" scheme="https://jsbluecat.github.io/tags/GAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fitting 3D Morphable Models using Local Features 解读</title>
+    <link href="https://jsbluecat.github.io/2019/06/01/3d-3dmm/"/>
+    <id>https://jsbluecat.github.io/2019/06/01/3d-3dmm/</id>
+    <published>2019-06-01T11:43:48.000Z</published>
+    <updated>2021-03-10T09:24:44.117Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;使用局部特征来适用3D的模型.</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Face" scheme="https://jsbluecat.github.io/tags/Face/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Point Net 论文解读</title>
+    <link href="https://jsbluecat.github.io/2019/05/31/3d-pointnet/"/>
+    <id>https://jsbluecat.github.io/2019/05/31/3d-pointnet/</id>
+    <published>2019-05-31T04:20:02.000Z</published>
+    <updated>2021-03-10T09:23:27.973Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Point-Net&quot;&gt;&lt;a href=&quot;#Point-Net&quot; class=&quot;headerlink&quot; title=&quot;Point Net&quot;&gt;&lt;/a&gt;Point Net&lt;/h1&gt;&lt;p&gt;本篇论文，是点云的开山之作，主要的贡献&lt;p</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Point Cloud" scheme="https://jsbluecat.github.io/tags/Point-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>upernet</title>
+    <link href="https://jsbluecat.github.io/2018/09/13/3d-upernet/"/>
+    <id>https://jsbluecat.github.io/2018/09/13/3d-upernet/</id>
+    <published>2018-09-13T05:15:01.000Z</published>
+    <updated>2021-03-10T09:22:21.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Unified-Perceptual-Parsing-for-Scene-Understanding&quot;&gt;&lt;a href=&quot;#Unified-Perceptual-Parsing-for-Scene-Understanding&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="deep learning" scheme="https://jsbluecat.github.io/tags/deep-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dcgan</title>
+    <link href="https://jsbluecat.github.io/2018/09/05/3d-dcgan/"/>
+    <id>https://jsbluecat.github.io/2018/09/05/3d-dcgan/</id>
+    <published>2018-09-05T14:18:42.000Z</published>
+    <updated>2021-03-10T09:39:30.754Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;dcgan&quot;&gt;&lt;a href=&quot;#dcgan&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="GAN" scheme="https://jsbluecat.github.io/tags/GAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OMDC</title>
+    <link href="https://jsbluecat.github.io/2018/09/04/tztq-omdc/"/>
+    <id>https://jsbluecat.github.io/2018/09/04/tztq-omdc/</id>
+    <published>2018-09-04T11:57:27.000Z</published>
+    <updated>2021-03-10T09:16:35.484Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Optimal-Margin-Distribution-Clustering&quot;&gt;&lt;a href=&quot;#Optimal-Margin-Distribution-Clustering&quot; class=&quot;headerlink&quot; title=&quot;Optimal Margin</summary>
+        
+      
+    
+    
+    
+    <category term="特征提取" scheme="https://jsbluecat.github.io/categories/%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/"/>
+    
+    
+    <category term="machine learning" scheme="https://jsbluecat.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>darts</title>
+    <link href="https://jsbluecat.github.io/2018/07/03/darts/"/>
+    <id>https://jsbluecat.github.io/2018/07/03/darts/</id>
+    <published>2018-07-02T23:28:32.000Z</published>
+    <updated>2021-03-10T09:44:27.046Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;DARTS-Differentiable-Architecture-Search&quot;&gt;&lt;a href=&quot;#DARTS-Differentiable-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;DARTS:</summary>
+        
+      
+    
+    
+    
+    <category term="强化学习" scheme="https://jsbluecat.github.io/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="自架构搜索网络" scheme="https://jsbluecat.github.io/tags/%E8%87%AA%E6%9E%B6%E6%9E%84%E6%90%9C%E7%B4%A2%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IrisFace</title>
+    <link href="https://jsbluecat.github.io/2018/06/05/3d-irisface/"/>
+    <id>https://jsbluecat.github.io/2018/06/05/3d-irisface/</id>
+    <published>2018-06-05T09:45:25.000Z</published>
+    <updated>2021-03-10T09:23:06.833Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基于虹膜和人脸检测的设想&quot;&gt;&lt;a href=&quot;#基于虹膜和人脸检测的设想&quot; class=&quot;headerlink&quot; title=&quot;基于虹膜和人脸检测的设想&quot;&gt;&lt;/a&gt;基于虹膜和人脸检测的设想&lt;/h1&gt;&lt;p&gt;在看了faceNet 使用 LMNN</summary>
+        
+      
+    
+    
+    
+    <category term="3D" scheme="https://jsbluecat.github.io/categories/3D/"/>
+    
+    
+    <category term="Face" scheme="https://jsbluecat.github.io/tags/Face/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-188 Best Time to Buy and Sell Stock IV</title>
+    <link href="https://jsbluecat.github.io/2018/05/15/leetcode-188/"/>
+    <id>https://jsbluecat.github.io/2018/05/15/leetcode-188/</id>
+    <published>2018-05-15T00:24:25.000Z</published>
+    <updated>2021-03-10T08:08:20.588Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Best-Time-to-Buy-and-Sell-Stock-IV&quot;&gt;&lt;a href=&quot;#Best-Time-to-Buy-and-Sell-Stock-IV&quot; class=&quot;headerlink&quot; title=&quot;Best Time to Buy and</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://jsbluecat.github.io/categories/leetcode/"/>
+    
+    
+    <category term="algorithm" scheme="https://jsbluecat.github.io/tags/algorithm/"/>
+    
+    <category term="array" scheme="https://jsbluecat.github.io/tags/array/"/>
+    
+    <category term="dp" scheme="https://jsbluecat.github.io/tags/dp/"/>
+    
+  </entry>
+  
+</feed>
